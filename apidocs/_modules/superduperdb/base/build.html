@@ -281,7 +281,7 @@
 
     <span class="c1"># Update configuration with keyword arguments.</span>
     <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-        <span class="nb">setattr</span><span class="p">(</span><span class="n">cfg</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+        <span class="n">cfg</span><span class="o">.</span><span class="n">force_set</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
 
     <span class="c1"># Helper function to build a data backend based on the URI.</span>
     <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="n">mapping</span><span class="p">):</span>

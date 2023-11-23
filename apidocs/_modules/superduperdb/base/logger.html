@@ -337,11 +337,19 @@
         <span class="n">logger</span><span class="o">.</span><span class="n">opt</span><span class="p">(</span><span class="n">depth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">))))</span></div>
 
 
+<div class="viewcode-block" id="Logging.multikey_exception">
+<a class="viewcode-back" href="../../../source/superduperdb.base.html#superduperdb.base.logger.Logging.multikey_exception">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">multikey_exception</span><span class="p">(</span><span class="n">msg</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">e</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">opt</span><span class="p">(</span><span class="n">depth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">exception</span><span class="o">=</span><span class="n">e</span><span class="p">)</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">))))</span></div>
+
+
     <span class="n">debug</span> <span class="o">=</span> <span class="n">multikey_debug</span>
     <span class="n">info</span> <span class="o">=</span> <span class="n">multikey_info</span>
     <span class="n">success</span> <span class="o">=</span> <span class="n">multikey_success</span>
     <span class="n">warn</span> <span class="o">=</span> <span class="n">multikey_warn</span>
-    <span class="n">error</span> <span class="o">=</span> <span class="n">multikey_error</span></div>
+    <span class="n">error</span> <span class="o">=</span> <span class="n">multikey_error</span>
+    <span class="n">exception</span> <span class="o">=</span> <span class="n">multikey_exception</span></div>
 
 </pre></div>
         </article>

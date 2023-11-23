@@ -362,7 +362,11 @@
                 <span class="k">else</span> <span class="s1">&#39;local vector search&#39;</span>
             <span class="p">)</span>
             <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">VectorSearchException</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s1">&#39;Error while finding nearest id </span><span class="si">{</span><span class="n">_id</span><span class="si">}</span><span class="s1"> from </span><span class="si">{</span><span class="n">local_msg</span><span class="si">}</span><span class="s1">&#39;</span>
+                <span class="sa">f</span><span class="s1">&#39;Error while finding nearest array from </span><span class="si">{</span><span class="n">local_msg</span><span class="si">}</span><span class="s1"> </span><span class="se">\n\</span>
+<span class="s1">                The problem might be either wrong id </span><span class="si">{</span><span class="n">_id</span><span class="si">}</span><span class="s1"> provided or vector database </span><span class="se">\</span>
+<span class="s1">                is empty (Not initialized properly), check if model/listener outputs </span><span class="se">\</span>
+<span class="s1">                are successfully computed, generally have issues </span><span class="se">\</span>
+<span class="s1">                when computes is distributed to dask for example. &#39;</span>
             <span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span></div>
 
 
@@ -400,7 +404,11 @@
                 <span class="k">else</span> <span class="s1">&#39;local vector search&#39;</span>
             <span class="p">)</span>
             <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">VectorSearchException</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s1">&#39;Error while finding nearest array from </span><span class="si">{</span><span class="n">local_msg</span><span class="si">}</span><span class="s1">&#39;</span>
+                <span class="sa">f</span><span class="s1">&#39;Error while finding nearest array from </span><span class="si">{</span><span class="n">local_msg</span><span class="si">}</span><span class="s1"> </span><span class="se">\n\</span>
+<span class="s1">                The problem might be either wrong vector provided or vector database </span><span class="se">\</span>
+<span class="s1">                is empty (Not initialized properly), check if model/listener outputs </span><span class="se">\</span>
+<span class="s1">                are successfully computed, generally have issues </span><span class="se">\</span>
+<span class="s1">                when computes is distributed to dask for example. &#39;</span>
             <span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span></div>
 </div>
 

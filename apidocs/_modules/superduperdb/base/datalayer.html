@@ -652,7 +652,6 @@
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">RawQuery</span><span class="p">):</span>
                 <span class="k">return</span> <span class="n">query</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="nb">breakpoint</span><span class="p">()</span>
             <span class="n">QueryExceptionCls</span> <span class="o">=</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">query_exceptions</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
             <span class="k">raise</span> <span class="n">QueryExceptionCls</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error while executing </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">query</span><span class="p">)</span><span class="si">}</span><span class="s2"> query&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
 
@@ -1217,7 +1216,9 @@
 
             <span class="nb">object</span><span class="o">.</span><span class="n">post_create</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
             <span class="nb">object</span><span class="o">.</span><span class="n">on_load</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-            <span class="n">jobs</span> <span class="o">=</span> <span class="nb">object</span><span class="o">.</span><span class="n">schedule_jobs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dependencies</span><span class="o">=</span><span class="n">dependencies</span><span class="p">)</span>
+            <span class="n">jobs</span> <span class="o">=</span> <span class="nb">object</span><span class="o">.</span><span class="n">schedule_jobs</span><span class="p">(</span>
+                <span class="bp">self</span><span class="p">,</span> <span class="n">dependencies</span><span class="o">=</span><span class="n">dependencies</span><span class="p">,</span> <span class="n">distributed</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">distributed</span>
+            <span class="p">)</span>
             <span class="k">return</span> <span class="n">jobs</span><span class="p">,</span> <span class="nb">object</span>
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">DatalayerException</span><span class="p">(</span>
