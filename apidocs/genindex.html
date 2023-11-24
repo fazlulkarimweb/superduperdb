@@ -160,8 +160,9 @@
 <li class="toctree-l2 has-children"><a class="reference internal" href="source/superduperdb.html">superduperdb package</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of superduperdb package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3 has-children"><a class="reference internal" href="source/superduperdb.backends.html">superduperdb.backends package</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of superduperdb.backends package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="source/superduperdb.backends.base.html">superduperdb.backends.base package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="source/superduperdb.backends.filesystem.html">superduperdb.backends.filesystem package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="source/superduperdb.backends.dask.html">superduperdb.backends.dask package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="source/superduperdb.backends.ibis.html">superduperdb.backends.ibis package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="source/superduperdb.backends.local.html">superduperdb.backends.local package</a></li>
 <li class="toctree-l4 has-children"><a class="reference internal" href="source/superduperdb.backends.mongodb.html">superduperdb.backends.mongodb package</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of superduperdb.backends.mongodb package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l5"><a class="reference internal" href="source/superduperdb.backends.mongodb.cdc.html">superduperdb.backends.mongodb.cdc package</a></li>
 </ul>
@@ -263,6 +264,8 @@
           <li><a href="source/superduperdb.base.html#superduperdb.base.config.LogLevel._generate_next_value_">(superduperdb.base.config.LogLevel method)</a>
 </li>
           <li><a href="source/superduperdb.base.html#superduperdb.base.config.LogType._generate_next_value_">(superduperdb.base.config.LogType method)</a>
+</li>
+          <li><a href="source/superduperdb.base.html#superduperdb.base.config.Mode._generate_next_value_">(superduperdb.base.config.Mode method)</a>
 </li>
           <li><a href="source/superduperdb.cdc.html#superduperdb.cdc.cdc.DBEvent._generate_next_value_">(superduperdb.cdc.cdc.DBEvent method)</a>
 </li>
@@ -471,6 +474,8 @@
 </li>
         <li><a href="source/superduperdb.misc.html#superduperdb.misc.colors.Colors.BLUE">BLUE (superduperdb.misc.colors.Colors attribute)</a>
 </li>
+        <li><a href="source/superduperdb.base.html#superduperdb.base.build.build">build() (in module superduperdb.base.build)</a>
+</li>
         <li><a href="source/superduperdb.base.html#superduperdb.base.build.build_artifact_store">build_artifact_store() (in module superduperdb.base.build)</a>
 
         <ul>
@@ -661,6 +666,8 @@
 </li>
         <li><a href="source/superduperdb.backends.base.html#superduperdb.backends.base.query.CompoundSelect">CompoundSelect (class in superduperdb.backends.base.query)</a>
 </li>
+        <li><a href="source/superduperdb.backends.base.html#superduperdb.backends.base.compute.ComputeBackend">ComputeBackend (class in superduperdb.backends.base.compute)</a>
+</li>
         <li><a href="source/superduperdb.base.html#superduperdb.base.config.Config">Config (class in superduperdb.base.config)</a>
 </li>
         <li><a href="source/superduperdb.base.html#superduperdb.base.configs.ConfigSettings.config">config (superduperdb.base.configs.ConfigSettings property)</a>
@@ -763,15 +770,13 @@
           <li><a href="source/superduperdb.misc.runnable.html#superduperdb.misc.runnable.thread.ThreadBase.daemon">(superduperdb.misc.runnable.thread.ThreadBase attribute)</a>
 </li>
         </ul></li>
-        <li><a href="source/superduperdb.server.html#superduperdb.server.dask_client.dask_client">dask_client() (in module superduperdb.server.dask_client)</a>
-</li>
         <li><a href="source/superduperdb.base.html#superduperdb.base.config.Cluster.dask_scheduler">dask_scheduler (superduperdb.base.config.Cluster attribute)</a>
 </li>
         <li><a href="source/superduperdb.cli.html#superduperdb.cli.serve.dask_scheduler">dask_scheduler() (in module superduperdb.cli.serve)</a>
 </li>
         <li><a href="source/superduperdb.cli.html#superduperdb.cli.serve.dask_worker">dask_worker() (in module superduperdb.cli.serve)</a>
 </li>
-        <li><a href="source/superduperdb.server.html#superduperdb.server.dask_client.DaskClient">DaskClient (class in superduperdb.server.dask_client)</a>
+        <li><a href="source/superduperdb.backends.dask.html#superduperdb.backends.dask.compute.DaskComputeBackend">DaskComputeBackend (class in superduperdb.backends.dask.compute)</a>
 </li>
         <li><a href="source/superduperdb.base.html#superduperdb.base.config.Config.data_backend">data_backend (superduperdb.base.config.Config attribute)</a>
 </li>
@@ -866,7 +871,7 @@
         <li><a href="source/superduperdb.backends.base.html#superduperdb.backends.base.artifact.ArtifactStore.delete">delete() (superduperdb.backends.base.artifact.ArtifactStore method)</a>
 
         <ul>
-          <li><a href="source/superduperdb.backends.filesystem.html#superduperdb.backends.filesystem.artifacts.FileSystemArtifactStore.delete">(superduperdb.backends.filesystem.artifacts.FileSystemArtifactStore method)</a>
+          <li><a href="source/superduperdb.backends.local.html#superduperdb.backends.local.artifacts.FileSystemArtifactStore.delete">(superduperdb.backends.local.artifacts.FileSystemArtifactStore method)</a>
 </li>
           <li><a href="source/superduperdb.backends.mongodb.html#superduperdb.backends.mongodb.artifacts.MongoArtifactStore.delete">(superduperdb.backends.mongodb.artifacts.MongoArtifactStore method)</a>
 </li>
@@ -911,6 +916,8 @@
         </ul></li>
         <li><a href="source/superduperdb.base.html#superduperdb.base.serializable.Serializable.deserialize">deserialize() (superduperdb.base.serializable.Serializable static method)</a>
 </li>
+        <li><a href="source/superduperdb.base.html#superduperdb.base.config.Mode.Development">Development (superduperdb.base.config.Mode attribute)</a>
+</li>
         <li><a href="source/superduperdb.components.html#superduperdb.components.model.Model.device">device (superduperdb.components.model.Model attribute)</a>
 
         <ul>
@@ -937,12 +944,14 @@
           <li><a href="source/superduperdb.html#superduperdb.VectorIndex.dimensions">(superduperdb.VectorIndex property)</a>
 </li>
         </ul></li>
-        <li><a href="source/superduperdb.server.html#superduperdb.server.dask_client.DaskClient.disconnect">disconnect() (superduperdb.server.dask_client.DaskClient method)</a>
+        <li><a href="source/superduperdb.backends.base.html#superduperdb.backends.base.compute.ComputeBackend.disconnect">disconnect() (superduperdb.backends.base.compute.ComputeBackend method)</a>
+
+        <ul>
+          <li><a href="source/superduperdb.backends.dask.html#superduperdb.backends.dask.compute.DaskComputeBackend.disconnect">(superduperdb.backends.dask.compute.DaskComputeBackend method)</a>
 </li>
-        <li><a href="source/superduperdb.base.html#superduperdb.base.datalayer.Datalayer.distributed_client">distributed_client (superduperdb.base.datalayer.Datalayer property)</a>
+          <li><a href="source/superduperdb.backends.local.html#superduperdb.backends.local.compute.LocalComputeBackend.disconnect">(superduperdb.backends.local.compute.LocalComputeBackend method)</a>
 </li>
-        <li><a href="source/superduperdb.base.html#superduperdb.base.exceptions.DistributedJobException">DistributedJobException</a>
-</li>
+        </ul></li>
         <li><a href="source/superduperdb.html#superduperdb.Document">Document (class in superduperdb)</a>
 
         <ul>
@@ -974,9 +983,9 @@
 </li>
           <li><a href="source/superduperdb.backends.base.html#superduperdb.backends.base.metadata.MetaDataStore.drop">(superduperdb.backends.base.metadata.MetaDataStore method)</a>
 </li>
-          <li><a href="source/superduperdb.backends.filesystem.html#superduperdb.backends.filesystem.artifacts.FileSystemArtifactStore.drop">(superduperdb.backends.filesystem.artifacts.FileSystemArtifactStore method)</a>
-</li>
           <li><a href="source/superduperdb.backends.ibis.html#superduperdb.backends.ibis.data_backend.IbisDataBackend.drop">(superduperdb.backends.ibis.data_backend.IbisDataBackend method)</a>
+</li>
+          <li><a href="source/superduperdb.backends.local.html#superduperdb.backends.local.artifacts.FileSystemArtifactStore.drop">(superduperdb.backends.local.artifacts.FileSystemArtifactStore method)</a>
 </li>
           <li><a href="source/superduperdb.backends.mongodb.html#superduperdb.backends.mongodb.artifacts.MongoArtifactStore.drop">(superduperdb.backends.mongodb.artifacts.MongoArtifactStore method)</a>
 </li>
@@ -1217,7 +1226,7 @@
         </ul></li>
         <li><a href="source/superduperdb.base.html#superduperdb.base.exceptions.FileNotFoundException">FileNotFoundException</a>
 </li>
-        <li><a href="source/superduperdb.backends.filesystem.html#superduperdb.backends.filesystem.artifacts.FileSystemArtifactStore">FileSystemArtifactStore (class in superduperdb.backends.filesystem.artifacts)</a>
+        <li><a href="source/superduperdb.backends.local.html#superduperdb.backends.local.artifacts.FileSystemArtifactStore">FileSystemArtifactStore (class in superduperdb.backends.local.artifacts)</a>
 </li>
         <li><a href="source/superduperdb.backends.mongodb.html#superduperdb.backends.mongodb.query.MongoReplaceOne.filter">filter (superduperdb.backends.mongodb.query.MongoReplaceOne attribute)</a>
 
@@ -1341,6 +1350,8 @@
           <li><a href="source/superduperdb.backends.mongodb.html#superduperdb.backends.mongodb.metadata.MongoMetaDataStore.get_component_version_parents">(superduperdb.backends.mongodb.metadata.MongoMetaDataStore method)</a>
 </li>
         </ul></li>
+        <li><a href="source/superduperdb.base.html#superduperdb.base.datalayer.Datalayer.get_compute">get_compute() (superduperdb.base.datalayer.Datalayer method)</a>
+</li>
         <li><a href="source/superduperdb.misc.html#superduperdb.misc.files.get_file_from_uri">get_file_from_uri() (in module superduperdb.misc.files)</a>
 </li>
         <li><a href="source/superduperdb.backends.base.html#superduperdb.backends.base.metadata.MetaDataStore.get_indexing_listener_of_vector_index">get_indexing_listener_of_vector_index() (superduperdb.backends.base.metadata.MetaDataStore method)</a>
@@ -1353,14 +1364,14 @@
         </ul></li>
         <li><a href="source/superduperdb.ext.html#superduperdb.ext.utils.get_key">get_key() (in module superduperdb.ext.utils)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="source/superduperdb.backends.base.html#superduperdb.backends.base.metadata.MetaDataStore.get_latest_version">get_latest_version() (superduperdb.backends.base.metadata.MetaDataStore method)</a>
 
         <ul>
           <li><a href="source/superduperdb.backends.mongodb.html#superduperdb.backends.mongodb.metadata.MongoMetaDataStore.get_latest_version">(superduperdb.backends.mongodb.metadata.MongoMetaDataStore method)</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="source/superduperdb.backends.base.html#superduperdb.backends.base.metadata.MetaDataStore.get_metadata">get_metadata() (superduperdb.backends.base.metadata.MetaDataStore method)</a>
 
         <ul>
@@ -1377,8 +1388,14 @@
 </li>
         <li><a href="source/superduperdb.backends.base.html#superduperdb.backends.base.metadata.MetaDataStore.get_queries">get_queries() (superduperdb.backends.base.metadata.MetaDataStore method)</a>
 </li>
-        <li><a href="source/superduperdb.server.html#superduperdb.server.dask_client.DaskClient.get_result">get_result() (superduperdb.server.dask_client.DaskClient method)</a>
+        <li><a href="source/superduperdb.backends.base.html#superduperdb.backends.base.compute.ComputeBackend.get_result">get_result() (superduperdb.backends.base.compute.ComputeBackend method)</a>
+
+        <ul>
+          <li><a href="source/superduperdb.backends.dask.html#superduperdb.backends.dask.compute.DaskComputeBackend.get_result">(superduperdb.backends.dask.compute.DaskComputeBackend method)</a>
 </li>
+          <li><a href="source/superduperdb.backends.local.html#superduperdb.backends.local.compute.LocalComputeBackend.get_result">(superduperdb.backends.local.compute.LocalComputeBackend method)</a>
+</li>
+        </ul></li>
         <li><a href="source/superduperdb.backends.mongodb.html#superduperdb.backends.mongodb.Collection.get_table">get_table() (superduperdb.backends.mongodb.Collection method)</a>
 
         <ul>
@@ -1717,6 +1734,14 @@
         </ul></li>
         <li><a href="source/superduperdb.base.html#superduperdb.base.cursor.SuperDuperCursor.limit">limit() (superduperdb.base.cursor.SuperDuperCursor method)</a>
 </li>
+        <li><a href="source/superduperdb.backends.base.html#superduperdb.backends.base.compute.ComputeBackend.list_all_pending_tasks">list_all_pending_tasks() (superduperdb.backends.base.compute.ComputeBackend method)</a>
+
+        <ul>
+          <li><a href="source/superduperdb.backends.dask.html#superduperdb.backends.dask.compute.DaskComputeBackend.list_all_pending_tasks">(superduperdb.backends.dask.compute.DaskComputeBackend method)</a>
+</li>
+          <li><a href="source/superduperdb.backends.local.html#superduperdb.backends.local.compute.LocalComputeBackend.list_all_pending_tasks">(superduperdb.backends.local.compute.LocalComputeBackend method)</a>
+</li>
+        </ul></li>
         <li><a href="source/superduperdb.backends.mongodb.html#superduperdb.backends.mongodb.metadata.MongoMetaDataStore.list_components_in_scope">list_components_in_scope() (superduperdb.backends.mongodb.metadata.MongoMetaDataStore method)</a>
 </li>
         <li><a href="source/superduperdb.backends.mongodb.html#superduperdb.backends.mongodb.data_backend.MongoDataBackend.list_vector_indexes">list_vector_indexes() (superduperdb.backends.mongodb.data_backend.MongoDataBackend method)</a>
@@ -1760,7 +1785,7 @@
         <li><a href="source/superduperdb.backends.base.html#superduperdb.backends.base.artifact.ArtifactStore.load_bytes">load_bytes() (superduperdb.backends.base.artifact.ArtifactStore method)</a>
 
         <ul>
-          <li><a href="source/superduperdb.backends.filesystem.html#superduperdb.backends.filesystem.artifacts.FileSystemArtifactStore.load_bytes">(superduperdb.backends.filesystem.artifacts.FileSystemArtifactStore method)</a>
+          <li><a href="source/superduperdb.backends.local.html#superduperdb.backends.local.artifacts.FileSystemArtifactStore.load_bytes">(superduperdb.backends.local.artifacts.FileSystemArtifactStore method)</a>
 </li>
           <li><a href="source/superduperdb.backends.mongodb.html#superduperdb.backends.mongodb.artifacts.MongoArtifactStore.load_bytes">(superduperdb.backends.mongodb.artifacts.MongoArtifactStore method)</a>
 </li>
@@ -1778,6 +1803,8 @@
         <li><a href="source/superduperdb.base.html#superduperdb.base.datalayer.LoadDict">LoadDict (class in superduperdb.base.datalayer)</a>
 </li>
         <li><a href="source/superduperdb.cli.html#superduperdb.cli.serve.local_cluster">local_cluster() (in module superduperdb.cli.serve)</a>
+</li>
+        <li><a href="source/superduperdb.backends.local.html#superduperdb.backends.local.compute.LocalComputeBackend">LocalComputeBackend (class in superduperdb.backends.local.compute)</a>
 </li>
         <li><a href="source/superduperdb.base.html#superduperdb.base.config.Config.log_level">log_level (superduperdb.base.config.Config attribute)</a>
 </li>
@@ -1865,6 +1892,8 @@
           <li><a href="source/superduperdb.html#superduperdb.Model.metrics">(superduperdb.Model attribute)</a>
 </li>
         </ul></li>
+        <li><a href="source/superduperdb.base.html#superduperdb.base.config.Mode">Mode (class in superduperdb.base.config)</a>
+</li>
         <li><a href="source/superduperdb.base.html#superduperdb.base.config.Config.mode">mode (superduperdb.base.config.Config attribute)</a>
 </li>
         <li><a href="source/superduperdb.html#superduperdb.Model">Model (class in superduperdb)</a>
@@ -1957,15 +1986,17 @@
 </li>
           <li><a href="source/superduperdb.backends.base.html#module-superduperdb.backends.base.backends">superduperdb.backends.base.backends</a>
 </li>
+          <li><a href="source/superduperdb.backends.base.html#module-superduperdb.backends.base.compute">superduperdb.backends.base.compute</a>
+</li>
           <li><a href="source/superduperdb.backends.base.html#module-superduperdb.backends.base.data_backend">superduperdb.backends.base.data_backend</a>
 </li>
           <li><a href="source/superduperdb.backends.base.html#module-superduperdb.backends.base.metadata">superduperdb.backends.base.metadata</a>
 </li>
           <li><a href="source/superduperdb.backends.base.html#module-superduperdb.backends.base.query">superduperdb.backends.base.query</a>
 </li>
-          <li><a href="source/superduperdb.backends.filesystem.html#module-superduperdb.backends.filesystem">superduperdb.backends.filesystem</a>
+          <li><a href="source/superduperdb.backends.dask.html#module-superduperdb.backends.dask">superduperdb.backends.dask</a>
 </li>
-          <li><a href="source/superduperdb.backends.filesystem.html#module-superduperdb.backends.filesystem.artifacts">superduperdb.backends.filesystem.artifacts</a>
+          <li><a href="source/superduperdb.backends.dask.html#module-superduperdb.backends.dask.compute">superduperdb.backends.dask.compute</a>
 </li>
           <li><a href="source/superduperdb.backends.ibis.html#module-superduperdb.backends.ibis">superduperdb.backends.ibis</a>
 </li>
@@ -1976,6 +2007,12 @@
           <li><a href="source/superduperdb.backends.ibis.html#module-superduperdb.backends.ibis.field_types">superduperdb.backends.ibis.field_types</a>
 </li>
           <li><a href="source/superduperdb.backends.ibis.html#module-superduperdb.backends.ibis.query">superduperdb.backends.ibis.query</a>
+</li>
+          <li><a href="source/superduperdb.backends.local.html#module-superduperdb.backends.local">superduperdb.backends.local</a>
+</li>
+          <li><a href="source/superduperdb.backends.local.html#module-superduperdb.backends.local.artifacts">superduperdb.backends.local.artifacts</a>
+</li>
+          <li><a href="source/superduperdb.backends.local.html#module-superduperdb.backends.local.compute">superduperdb.backends.local.compute</a>
 </li>
           <li><a href="source/superduperdb.backends.mongodb.html#module-superduperdb.backends.mongodb">superduperdb.backends.mongodb</a>
 </li>
@@ -2121,8 +2158,6 @@
 </li>
           <li><a href="source/superduperdb.server.html#module-superduperdb.server">superduperdb.server</a>
 </li>
-          <li><a href="source/superduperdb.server.html#module-superduperdb.server.dask_client">superduperdb.server.dask_client</a>
-</li>
           <li><a href="source/superduperdb.vector_search.html#module-superduperdb.vector_search">superduperdb.vector_search</a>
 </li>
           <li><a href="source/superduperdb.vector_search.html#module-superduperdb.vector_search.base">superduperdb.vector_search.base</a>
@@ -2202,6 +2237,14 @@
           <li><a href="source/superduperdb.misc.runnable.html#superduperdb.misc.runnable.thread.ThreadBase.name">(superduperdb.misc.runnable.thread.ThreadBase attribute)</a>
 </li>
           <li><a href="source/superduperdb.vector_search.html#superduperdb.vector_search.in_memory.InMemoryVectorSearcher.name">(superduperdb.vector_search.in_memory.InMemoryVectorSearcher attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="source/superduperdb.backends.base.html#superduperdb.backends.base.compute.ComputeBackend.name">name() (superduperdb.backends.base.compute.ComputeBackend method)</a>
+
+        <ul>
+          <li><a href="source/superduperdb.backends.dask.html#superduperdb.backends.dask.compute.DaskComputeBackend.name">(superduperdb.backends.dask.compute.DaskComputeBackend method)</a>
+</li>
+          <li><a href="source/superduperdb.backends.local.html#superduperdb.backends.local.compute.LocalComputeBackend.name">(superduperdb.backends.local.compute.LocalComputeBackend method)</a>
 </li>
         </ul></li>
     </ul></td>
@@ -2466,6 +2509,8 @@
           <li><a href="source/superduperdb.backends.mongodb.html#superduperdb.backends.mongodb.query.Collection.primary_id">(superduperdb.backends.mongodb.query.Collection attribute)</a>
 </li>
         </ul></li>
+        <li><a href="source/superduperdb.base.html#superduperdb.base.config.Mode.Production">Production (superduperdb.base.config.Mode attribute)</a>
+</li>
         <li><a href="source/superduperdb.base.html#superduperdb.base.config.Config.Config.protected_namespaces">protected_namespaces (superduperdb.base.config.Config.Config attribute)</a>
 </li>
     </ul></td>
@@ -2643,8 +2688,6 @@
         <li><a href="source/superduperdb.misc.html#superduperdb.misc.run.run">run() (in module superduperdb.misc.run)</a>
 
         <ul>
-          <li><a href="source/superduperdb.base.html#superduperdb.base.datalayer.Datalayer.run">(superduperdb.base.datalayer.Datalayer method)</a>
-</li>
           <li><a href="source/superduperdb.cdc.html#superduperdb.cdc.cdc.CDCHandler.run">(superduperdb.cdc.cdc.CDCHandler method)</a>
 </li>
           <li><a href="source/superduperdb.cdc.html#superduperdb.cdc.cdc.DatabaseListenerThreadScheduler.run">(superduperdb.cdc.cdc.DatabaseListenerThreadScheduler method)</a>
@@ -2689,7 +2732,7 @@
         <li><a href="source/superduperdb.backends.base.html#superduperdb.backends.base.artifact.ArtifactStore.save_artifact">save_artifact() (superduperdb.backends.base.artifact.ArtifactStore method)</a>
 
         <ul>
-          <li><a href="source/superduperdb.backends.filesystem.html#superduperdb.backends.filesystem.artifacts.FileSystemArtifactStore.save_artifact">(superduperdb.backends.filesystem.artifacts.FileSystemArtifactStore method)</a>
+          <li><a href="source/superduperdb.backends.local.html#superduperdb.backends.local.artifacts.FileSystemArtifactStore.save_artifact">(superduperdb.backends.local.artifacts.FileSystemArtifactStore method)</a>
 </li>
           <li><a href="source/superduperdb.backends.mongodb.html#superduperdb.backends.mongodb.artifacts.MongoArtifactStore.save_artifact">(superduperdb.backends.mongodb.artifacts.MongoArtifactStore method)</a>
 </li>
@@ -2888,6 +2931,8 @@
         </ul></li>
         <li><a href="source/superduperdb.backends.mongodb.cdc.html#superduperdb.backends.mongodb.cdc.listener.MongoDatabaseListener.set_change_pipeline">set_change_pipeline() (superduperdb.backends.mongodb.cdc.listener.MongoDatabaseListener method)</a>
 </li>
+        <li><a href="source/superduperdb.base.html#superduperdb.base.datalayer.Datalayer.set_compute">set_compute() (superduperdb.base.datalayer.Datalayer method)</a>
+</li>
         <li><a href="source/superduperdb.backends.base.html#superduperdb.backends.base.data_backend.BaseDataBackend.set_content_bytes">set_content_bytes() (superduperdb.backends.base.data_backend.BaseDataBackend method)</a>
 
         <ul>
@@ -2932,8 +2977,14 @@
           <li><a href="source/superduperdb.backends.mongodb.html#superduperdb.backends.mongodb.metadata.MongoMetaDataStore.show_jobs">(superduperdb.backends.mongodb.metadata.MongoMetaDataStore method)</a>
 </li>
         </ul></li>
-        <li><a href="source/superduperdb.server.html#superduperdb.server.dask_client.DaskClient.shutdown">shutdown() (superduperdb.server.dask_client.DaskClient method)</a>
+        <li><a href="source/superduperdb.backends.base.html#superduperdb.backends.base.compute.ComputeBackend.shutdown">shutdown() (superduperdb.backends.base.compute.ComputeBackend method)</a>
+
+        <ul>
+          <li><a href="source/superduperdb.backends.dask.html#superduperdb.backends.dask.compute.DaskComputeBackend.shutdown">(superduperdb.backends.dask.compute.DaskComputeBackend method)</a>
 </li>
+          <li><a href="source/superduperdb.backends.local.html#superduperdb.backends.local.compute.LocalComputeBackend.shutdown">(superduperdb.backends.local.compute.LocalComputeBackend method)</a>
+</li>
+        </ul></li>
         <li><a href="source/superduperdb.ext.sklearn.html#superduperdb.ext.sklearn.SklearnTrainingConfiguration">SklearnTrainingConfiguration (class in superduperdb.ext.sklearn)</a>
 
         <ul>
@@ -2984,10 +3035,14 @@
           <li><a href="source/superduperdb.html#superduperdb.JSONable.SUBCLASSES">(superduperdb.JSONable attribute)</a>
 </li>
         </ul></li>
-        <li><a href="source/superduperdb.server.html#superduperdb.server.dask_client.DaskClient.submit">submit() (superduperdb.server.dask_client.DaskClient method)</a>
+        <li><a href="source/superduperdb.backends.base.html#superduperdb.backends.base.compute.ComputeBackend.submit">submit() (superduperdb.backends.base.compute.ComputeBackend method)</a>
+
+        <ul>
+          <li><a href="source/superduperdb.backends.dask.html#superduperdb.backends.dask.compute.DaskComputeBackend.submit">(superduperdb.backends.dask.compute.DaskComputeBackend method)</a>
 </li>
-        <li><a href="source/superduperdb.server.html#superduperdb.server.dask_client.DaskClient.submit_and_forget">submit_and_forget() (superduperdb.server.dask_client.DaskClient method)</a>
+          <li><a href="source/superduperdb.backends.local.html#superduperdb.backends.local.compute.LocalComputeBackend.submit">(superduperdb.backends.local.compute.LocalComputeBackend method)</a>
 </li>
+        </ul></li>
         <li><a href="source/superduperdb.base.html#superduperdb.base.config.LogLevel.SUCCESS">SUCCESS (superduperdb.base.config.LogLevel attribute)</a>
 </li>
         <li><a href="source/superduperdb.base.html#superduperdb.base.logger.Logging.success">success() (superduperdb.base.logger.Logging static method)</a>
@@ -3036,6 +3091,13 @@
 </li>
         </ul></li>
         <li>
+    superduperdb.backends.base.compute
+
+        <ul>
+          <li><a href="source/superduperdb.backends.base.html#module-superduperdb.backends.base.compute">module</a>
+</li>
+        </ul></li>
+        <li>
     superduperdb.backends.base.data_backend
 
         <ul>
@@ -3057,17 +3119,17 @@
 </li>
         </ul></li>
         <li>
-    superduperdb.backends.filesystem
+    superduperdb.backends.dask
 
         <ul>
-          <li><a href="source/superduperdb.backends.filesystem.html#module-superduperdb.backends.filesystem">module</a>
+          <li><a href="source/superduperdb.backends.dask.html#module-superduperdb.backends.dask">module</a>
 </li>
         </ul></li>
         <li>
-    superduperdb.backends.filesystem.artifacts
+    superduperdb.backends.dask.compute
 
         <ul>
-          <li><a href="source/superduperdb.backends.filesystem.html#module-superduperdb.backends.filesystem.artifacts">module</a>
+          <li><a href="source/superduperdb.backends.dask.html#module-superduperdb.backends.dask.compute">module</a>
 </li>
         </ul></li>
         <li>
@@ -3098,6 +3160,8 @@
           <li><a href="source/superduperdb.backends.ibis.html#module-superduperdb.backends.ibis.field_types">module</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li>
     superduperdb.backends.ibis.query
 
@@ -3105,8 +3169,27 @@
           <li><a href="source/superduperdb.backends.ibis.html#module-superduperdb.backends.ibis.query">module</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
+        <li>
+    superduperdb.backends.local
+
+        <ul>
+          <li><a href="source/superduperdb.backends.local.html#module-superduperdb.backends.local">module</a>
+</li>
+        </ul></li>
+        <li>
+    superduperdb.backends.local.artifacts
+
+        <ul>
+          <li><a href="source/superduperdb.backends.local.html#module-superduperdb.backends.local.artifacts">module</a>
+</li>
+        </ul></li>
+        <li>
+    superduperdb.backends.local.compute
+
+        <ul>
+          <li><a href="source/superduperdb.backends.local.html#module-superduperdb.backends.local.compute">module</a>
+</li>
+        </ul></li>
         <li>
     superduperdb.backends.mongodb
 
@@ -3612,13 +3695,6 @@
 </li>
         </ul></li>
         <li>
-    superduperdb.server.dask_client
-
-        <ul>
-          <li><a href="source/superduperdb.server.html#module-superduperdb.server.dask_client">module</a>
-</li>
-        </ul></li>
-        <li>
     superduperdb.vector_search
 
         <ul>
@@ -3936,9 +4012,9 @@
 </li>
           <li><a href="source/superduperdb.backends.base.html#superduperdb.backends.base.metadata.MetaDataStore.url">(superduperdb.backends.base.metadata.MetaDataStore method)</a>
 </li>
-          <li><a href="source/superduperdb.backends.filesystem.html#superduperdb.backends.filesystem.artifacts.FileSystemArtifactStore.url">(superduperdb.backends.filesystem.artifacts.FileSystemArtifactStore method)</a>
-</li>
           <li><a href="source/superduperdb.backends.ibis.html#superduperdb.backends.ibis.data_backend.IbisDataBackend.url">(superduperdb.backends.ibis.data_backend.IbisDataBackend method)</a>
+</li>
+          <li><a href="source/superduperdb.backends.local.html#superduperdb.backends.local.artifacts.FileSystemArtifactStore.url">(superduperdb.backends.local.artifacts.FileSystemArtifactStore method)</a>
 </li>
           <li><a href="source/superduperdb.backends.mongodb.html#superduperdb.backends.mongodb.artifacts.MongoArtifactStore.url">(superduperdb.backends.mongodb.artifacts.MongoArtifactStore method)</a>
 </li>
@@ -4065,18 +4141,24 @@
   <h2>W</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="source/superduperdb.server.html#superduperdb.server.dask_client.DaskClient.wait_all_pending_tasks">wait_all_pending_tasks() (superduperdb.server.dask_client.DaskClient method)</a>
+        <li><a href="source/superduperdb.backends.base.html#superduperdb.backends.base.compute.ComputeBackend.wait_all_pending_tasks">wait_all_pending_tasks() (superduperdb.backends.base.compute.ComputeBackend method)</a>
+
+        <ul>
+          <li><a href="source/superduperdb.backends.dask.html#superduperdb.backends.dask.compute.DaskComputeBackend.wait_all_pending_tasks">(superduperdb.backends.dask.compute.DaskComputeBackend method)</a>
 </li>
+          <li><a href="source/superduperdb.backends.local.html#superduperdb.backends.local.compute.LocalComputeBackend.wait_all_pending_tasks">(superduperdb.backends.local.compute.LocalComputeBackend method)</a>
+</li>
+        </ul></li>
         <li><a href="source/superduperdb.base.html#superduperdb.base.config.Retry.wait_max">wait_max (superduperdb.base.config.Retry attribute)</a>
 </li>
         <li><a href="source/superduperdb.base.html#superduperdb.base.config.Retry.wait_min">wait_min (superduperdb.base.config.Retry attribute)</a>
 </li>
         <li><a href="source/superduperdb.base.html#superduperdb.base.config.Retry.wait_multiplier">wait_multiplier (superduperdb.base.config.Retry attribute)</a>
 </li>
-        <li><a href="source/superduperdb.base.html#superduperdb.base.config.LogLevel.WARN">WARN (superduperdb.base.config.LogLevel attribute)</a>
-</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="source/superduperdb.base.html#superduperdb.base.config.LogLevel.WARN">WARN (superduperdb.base.config.LogLevel attribute)</a>
+</li>
         <li><a href="source/superduperdb.base.html#superduperdb.base.logger.Logging.warn">warn() (superduperdb.base.logger.Logging static method)</a>
 </li>
         <li><a href="source/superduperdb.backends.base.html#superduperdb.backends.base.metadata.MetaDataStore.watch_job">watch_job() (superduperdb.backends.base.metadata.MetaDataStore method)</a>

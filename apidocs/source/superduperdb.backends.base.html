@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="superduperdb.backends.filesystem package" href="superduperdb.backends.filesystem.html" /><link rel="prev" title="superduperdb.backends package" href="superduperdb.backends.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="superduperdb.backends.dask package" href="superduperdb.backends.dask.html" /><link rel="prev" title="superduperdb.backends package" href="superduperdb.backends.html" />
 
     <!-- Generated with Sphinx 7.2.6 and Furo 2023.09.10 -->
         <title>superduperdb.backends.base package - Python documentation</title>
@@ -162,8 +162,9 @@
 <li class="toctree-l2 current has-children"><a class="reference internal" href="superduperdb.html">superduperdb package</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of superduperdb package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l3 current has-children"><a class="reference internal" href="superduperdb.backends.html">superduperdb.backends package</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of superduperdb.backends package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l4 current current-page"><a class="current reference internal" href="#">superduperdb.backends.base package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="superduperdb.backends.filesystem.html">superduperdb.backends.filesystem package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="superduperdb.backends.dask.html">superduperdb.backends.dask package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="superduperdb.backends.ibis.html">superduperdb.backends.ibis package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="superduperdb.backends.local.html">superduperdb.backends.local package</a></li>
 <li class="toctree-l4 has-children"><a class="reference internal" href="superduperdb.backends.mongodb.html">superduperdb.backends.mongodb package</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of superduperdb.backends.mongodb package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l5"><a class="reference internal" href="superduperdb.backends.mongodb.cdc.html">superduperdb.backends.mongodb.cdc package</a></li>
 </ul>
@@ -477,6 +478,72 @@ artifact lookup.</p>
 </section>
 <section id="module-superduperdb.backends.base.backends">
 <span id="superduperdb-backends-base-backends-module"></span><h2>superduperdb.backends.base.backends module<a class="headerlink" href="#module-superduperdb.backends.base.backends" title="Link to this heading">#</a></h2>
+</section>
+<section id="module-superduperdb.backends.base.compute">
+<span id="superduperdb-backends-base-compute-module"></span><h2>superduperdb.backends.base.compute module<a class="headerlink" href="#module-superduperdb.backends.base.compute" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="superduperdb.backends.base.compute.ComputeBackend">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">superduperdb.backends.base.compute.</span></span><span class="sig-name descname"><span class="pre">ComputeBackend</span></span><a class="reference internal" href="../_modules/superduperdb/backends/base/compute.html#ComputeBackend"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#superduperdb.backends.base.compute.ComputeBackend" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>Abstraction for sending jobs to a distributed compute platform.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="superduperdb.backends.base.compute.ComputeBackend.disconnect">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">disconnect</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/superduperdb/backends/base/compute.html#ComputeBackend.disconnect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#superduperdb.backends.base.compute.ComputeBackend.disconnect" title="Link to this definition">#</a></dt>
+<dd><p>Disconnect the client.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="superduperdb.backends.base.compute.ComputeBackend.get_result">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_result</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">identifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="../_modules/superduperdb/backends/base/compute.html#ComputeBackend.get_result"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#superduperdb.backends.base.compute.ComputeBackend.get_result" title="Link to this definition">#</a></dt>
+<dd><p>Retrieves the result of a previously submitted task.
+Note: This will block until the future is completed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>identifier</strong> – The identifier of the submitted task.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="superduperdb.backends.base.compute.ComputeBackend.list_all_pending_tasks">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">list_all_pending_tasks</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="../_modules/superduperdb/backends/base/compute.html#ComputeBackend.list_all_pending_tasks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#superduperdb.backends.base.compute.ComputeBackend.list_all_pending_tasks" title="Link to this definition">#</a></dt>
+<dd><p>List for all pending tasks</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="superduperdb.backends.base.compute.ComputeBackend.name">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/superduperdb/backends/base/compute.html#ComputeBackend.name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#superduperdb.backends.base.compute.ComputeBackend.name" title="Link to this definition">#</a></dt>
+<dd><p>Return the name of current compute engine</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="superduperdb.backends.base.compute.ComputeBackend.shutdown">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">shutdown</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/superduperdb/backends/base/compute.html#ComputeBackend.shutdown"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#superduperdb.backends.base.compute.ComputeBackend.shutdown" title="Link to this definition">#</a></dt>
+<dd><p>Shuts down the compute cluster.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="superduperdb.backends.base.compute.ComputeBackend.submit">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">submit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="../_modules/superduperdb/backends/base/compute.html#ComputeBackend.submit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#superduperdb.backends.base.compute.ComputeBackend.submit" title="Link to this definition">#</a></dt>
+<dd><p>Submits a function to the Dask server for execution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>function</strong> – The function to be executed.</p></li>
+<li><p><strong>kwargs</strong> – Additional keyword arguments to be passed to the function.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="superduperdb.backends.base.compute.ComputeBackend.wait_all_pending_tasks">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">wait_all_pending_tasks</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/superduperdb/backends/base/compute.html#ComputeBackend.wait_all_pending_tasks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#superduperdb.backends.base.compute.ComputeBackend.wait_all_pending_tasks" title="Link to this definition">#</a></dt>
+<dd><p>Waits for all pending tasks to complete.</p>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 <section id="module-superduperdb.backends.base.data_backend">
 <span id="superduperdb-backends-base-data-backend-module"></span><h2>superduperdb.backends.base.data_backend module<a class="headerlink" href="#module-superduperdb.backends.base.data_backend" title="Link to this heading">#</a></h2>
@@ -1430,12 +1497,12 @@ for performing a vector search on the parent query chain inputs.</p>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="superduperdb.backends.filesystem.html">
+          <a class="next-page" href="superduperdb.backends.dask.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">superduperdb.backends.filesystem package</div>
+                <div class="title">superduperdb.backends.dask package</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -1511,6 +1578,19 @@ for performing a vector search on the parent query chain inputs.</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#module-superduperdb.backends.base.backends">superduperdb.backends.base.backends module</a></li>
+<li><a class="reference internal" href="#module-superduperdb.backends.base.compute">superduperdb.backends.base.compute module</a><ul>
+<li><a class="reference internal" href="#superduperdb.backends.base.compute.ComputeBackend"><code class="docutils literal notranslate"><span class="pre">ComputeBackend</span></code></a><ul>
+<li><a class="reference internal" href="#superduperdb.backends.base.compute.ComputeBackend.disconnect"><code class="docutils literal notranslate"><span class="pre">ComputeBackend.disconnect()</span></code></a></li>
+<li><a class="reference internal" href="#superduperdb.backends.base.compute.ComputeBackend.get_result"><code class="docutils literal notranslate"><span class="pre">ComputeBackend.get_result()</span></code></a></li>
+<li><a class="reference internal" href="#superduperdb.backends.base.compute.ComputeBackend.list_all_pending_tasks"><code class="docutils literal notranslate"><span class="pre">ComputeBackend.list_all_pending_tasks()</span></code></a></li>
+<li><a class="reference internal" href="#superduperdb.backends.base.compute.ComputeBackend.name"><code class="docutils literal notranslate"><span class="pre">ComputeBackend.name()</span></code></a></li>
+<li><a class="reference internal" href="#superduperdb.backends.base.compute.ComputeBackend.shutdown"><code class="docutils literal notranslate"><span class="pre">ComputeBackend.shutdown()</span></code></a></li>
+<li><a class="reference internal" href="#superduperdb.backends.base.compute.ComputeBackend.submit"><code class="docutils literal notranslate"><span class="pre">ComputeBackend.submit()</span></code></a></li>
+<li><a class="reference internal" href="#superduperdb.backends.base.compute.ComputeBackend.wait_all_pending_tasks"><code class="docutils literal notranslate"><span class="pre">ComputeBackend.wait_all_pending_tasks()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a class="reference internal" href="#module-superduperdb.backends.base.data_backend">superduperdb.backends.base.data_backend module</a><ul>
 <li><a class="reference internal" href="#superduperdb.backends.base.data_backend.BaseDataBackend"><code class="docutils literal notranslate"><span class="pre">BaseDataBackend</span></code></a><ul>
 <li><a class="reference internal" href="#superduperdb.backends.base.data_backend.BaseDataBackend.build_artifact_store"><code class="docutils literal notranslate"><span class="pre">BaseDataBackend.build_artifact_store()</span></code></a></li>

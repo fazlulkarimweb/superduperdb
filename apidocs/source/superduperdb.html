@@ -162,8 +162,9 @@
 <li class="toctree-l2 current has-children current-page"><a class="current reference internal" href="#">superduperdb package</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of superduperdb package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3 has-children"><a class="reference internal" href="superduperdb.backends.html">superduperdb.backends package</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of superduperdb.backends package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="superduperdb.backends.base.html">superduperdb.backends.base package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="superduperdb.backends.filesystem.html">superduperdb.backends.filesystem package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="superduperdb.backends.dask.html">superduperdb.backends.dask package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="superduperdb.backends.ibis.html">superduperdb.backends.ibis package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="superduperdb.backends.local.html">superduperdb.backends.local package</a></li>
 <li class="toctree-l4 has-children"><a class="reference internal" href="superduperdb.backends.mongodb.html">superduperdb.backends.mongodb package</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of superduperdb.backends.mongodb package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l5"><a class="reference internal" href="superduperdb.backends.mongodb.cdc.html">superduperdb.backends.mongodb.cdc package</a></li>
 </ul>
@@ -245,16 +246,17 @@
 <li class="toctree-l4"><a class="reference internal" href="superduperdb.backends.base.html#submodules">Submodules</a></li>
 <li class="toctree-l4"><a class="reference internal" href="superduperdb.backends.base.html#module-superduperdb.backends.base.artifact">superduperdb.backends.base.artifact module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="superduperdb.backends.base.html#module-superduperdb.backends.base.backends">superduperdb.backends.base.backends module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="superduperdb.backends.base.html#module-superduperdb.backends.base.compute">superduperdb.backends.base.compute module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="superduperdb.backends.base.html#module-superduperdb.backends.base.data_backend">superduperdb.backends.base.data_backend module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="superduperdb.backends.base.html#module-superduperdb.backends.base.metadata">superduperdb.backends.base.metadata module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="superduperdb.backends.base.html#module-superduperdb.backends.base.query">superduperdb.backends.base.query module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="superduperdb.backends.base.html#module-superduperdb.backends.base">Module contents</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="superduperdb.backends.filesystem.html">superduperdb.backends.filesystem package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="superduperdb.backends.filesystem.html#submodules">Submodules</a></li>
-<li class="toctree-l4"><a class="reference internal" href="superduperdb.backends.filesystem.html#module-superduperdb.backends.filesystem.artifacts">superduperdb.backends.filesystem.artifacts module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="superduperdb.backends.filesystem.html#module-superduperdb.backends.filesystem">Module contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="superduperdb.backends.dask.html">superduperdb.backends.dask package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="superduperdb.backends.dask.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="superduperdb.backends.dask.html#module-superduperdb.backends.dask.compute">superduperdb.backends.dask.compute module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="superduperdb.backends.dask.html#module-superduperdb.backends.dask">Module contents</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="superduperdb.backends.ibis.html">superduperdb.backends.ibis package</a><ul>
@@ -264,6 +266,13 @@
 <li class="toctree-l4"><a class="reference internal" href="superduperdb.backends.ibis.html#module-superduperdb.backends.ibis.field_types">superduperdb.backends.ibis.field_types module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="superduperdb.backends.ibis.html#module-superduperdb.backends.ibis.query">superduperdb.backends.ibis.query module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="superduperdb.backends.ibis.html#module-superduperdb.backends.ibis">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="superduperdb.backends.local.html">superduperdb.backends.local package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="superduperdb.backends.local.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="superduperdb.backends.local.html#module-superduperdb.backends.local.artifacts">superduperdb.backends.local.artifacts module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="superduperdb.backends.local.html#module-superduperdb.backends.local.compute">superduperdb.backends.local.compute module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="superduperdb.backends.local.html#module-superduperdb.backends.local">Module contents</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="superduperdb.backends.mongodb.html">superduperdb.backends.mongodb package</a><ul>
@@ -323,6 +332,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="superduperdb.base.html#module-superduperdb.base.build">superduperdb.base.build module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="superduperdb.base.html#superduperdb.base.build.build"><code class="docutils literal notranslate"><span class="pre">build()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="superduperdb.base.html#superduperdb.base.build.build_artifact_store"><code class="docutils literal notranslate"><span class="pre">build_artifact_store()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="superduperdb.base.html#superduperdb.base.build.build_datalayer"><code class="docutils literal notranslate"><span class="pre">build_datalayer()</span></code></a></li>
 </ul>
@@ -381,6 +391,12 @@
 <li class="toctree-l4"><a class="reference internal" href="superduperdb.base.html#superduperdb.base.config.LogType._generate_next_value_"><code class="docutils literal notranslate"><span class="pre">LogType._generate_next_value_()</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="superduperdb.base.html#superduperdb.base.config.Mode"><code class="docutils literal notranslate"><span class="pre">Mode</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="superduperdb.base.html#superduperdb.base.config.Mode.Development"><code class="docutils literal notranslate"><span class="pre">Mode.Development</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="superduperdb.base.html#superduperdb.base.config.Mode.Production"><code class="docutils literal notranslate"><span class="pre">Mode.Production</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="superduperdb.base.html#superduperdb.base.config.Mode._generate_next_value_"><code class="docutils literal notranslate"><span class="pre">Mode._generate_next_value_()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="superduperdb.base.html#superduperdb.base.config.Retry"><code class="docutils literal notranslate"><span class="pre">Retry</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="superduperdb.base.html#superduperdb.base.config.Retry.model_config"><code class="docutils literal notranslate"><span class="pre">Retry.model_config</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="superduperdb.base.html#superduperdb.base.config.Retry.model_fields"><code class="docutils literal notranslate"><span class="pre">Retry.model_fields</span></code></a></li>
@@ -431,9 +447,9 @@
 <li class="toctree-l4"><a class="reference internal" href="superduperdb.base.html#superduperdb.base.datalayer.Datalayer.apredict"><code class="docutils literal notranslate"><span class="pre">Datalayer.apredict()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="superduperdb.base.html#superduperdb.base.datalayer.Datalayer.backfill_vector_search"><code class="docutils literal notranslate"><span class="pre">Datalayer.backfill_vector_search()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="superduperdb.base.html#superduperdb.base.datalayer.Datalayer.delete"><code class="docutils literal notranslate"><span class="pre">Datalayer.delete()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="superduperdb.base.html#superduperdb.base.datalayer.Datalayer.distributed_client"><code class="docutils literal notranslate"><span class="pre">Datalayer.distributed_client</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="superduperdb.base.html#superduperdb.base.datalayer.Datalayer.drop"><code class="docutils literal notranslate"><span class="pre">Datalayer.drop()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="superduperdb.base.html#superduperdb.base.datalayer.Datalayer.execute"><code class="docutils literal notranslate"><span class="pre">Datalayer.execute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="superduperdb.base.html#superduperdb.base.datalayer.Datalayer.get_compute"><code class="docutils literal notranslate"><span class="pre">Datalayer.get_compute()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="superduperdb.base.html#superduperdb.base.datalayer.Datalayer.initialize_vector_searcher"><code class="docutils literal notranslate"><span class="pre">Datalayer.initialize_vector_searcher()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="superduperdb.base.html#superduperdb.base.datalayer.Datalayer.insert"><code class="docutils literal notranslate"><span class="pre">Datalayer.insert()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="superduperdb.base.html#superduperdb.base.datalayer.Datalayer.load"><code class="docutils literal notranslate"><span class="pre">Datalayer.load()</span></code></a></li>
@@ -442,10 +458,10 @@
 <li class="toctree-l4"><a class="reference internal" href="superduperdb.base.html#superduperdb.base.datalayer.Datalayer.refresh_after_update_or_insert"><code class="docutils literal notranslate"><span class="pre">Datalayer.refresh_after_update_or_insert()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="superduperdb.base.html#superduperdb.base.datalayer.Datalayer.remove"><code class="docutils literal notranslate"><span class="pre">Datalayer.remove()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="superduperdb.base.html#superduperdb.base.datalayer.Datalayer.replace"><code class="docutils literal notranslate"><span class="pre">Datalayer.replace()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="superduperdb.base.html#superduperdb.base.datalayer.Datalayer.run"><code class="docutils literal notranslate"><span class="pre">Datalayer.run()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="superduperdb.base.html#superduperdb.base.datalayer.Datalayer.select"><code class="docutils literal notranslate"><span class="pre">Datalayer.select()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="superduperdb.base.html#superduperdb.base.datalayer.Datalayer.select_nearest"><code class="docutils literal notranslate"><span class="pre">Datalayer.select_nearest()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="superduperdb.base.html#superduperdb.base.datalayer.Datalayer.server_mode"><code class="docutils literal notranslate"><span class="pre">Datalayer.server_mode</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="superduperdb.base.html#superduperdb.base.datalayer.Datalayer.set_compute"><code class="docutils literal notranslate"><span class="pre">Datalayer.set_compute()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="superduperdb.base.html#superduperdb.base.datalayer.Datalayer.show"><code class="docutils literal notranslate"><span class="pre">Datalayer.show()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="superduperdb.base.html#superduperdb.base.datalayer.Datalayer.type_id_to_cache_mapping"><code class="docutils literal notranslate"><span class="pre">Datalayer.type_id_to_cache_mapping</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="superduperdb.base.html#superduperdb.base.datalayer.Datalayer.update"><code class="docutils literal notranslate"><span class="pre">Datalayer.update()</span></code></a></li>
@@ -491,7 +507,6 @@
 <li class="toctree-l3"><a class="reference internal" href="superduperdb.base.html#superduperdb.base.exceptions.DatabaseConnectionException"><code class="docutils literal notranslate"><span class="pre">DatabaseConnectionException</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="superduperdb.base.html#superduperdb.base.exceptions.DatalayerException"><code class="docutils literal notranslate"><span class="pre">DatalayerException</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="superduperdb.base.html#superduperdb.base.exceptions.DeleteQueryException"><code class="docutils literal notranslate"><span class="pre">DeleteQueryException</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="superduperdb.base.html#superduperdb.base.exceptions.DistributedJobException"><code class="docutils literal notranslate"><span class="pre">DistributedJobException</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="superduperdb.base.html#superduperdb.base.exceptions.EncoderException"><code class="docutils literal notranslate"><span class="pre">EncoderException</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="superduperdb.base.html#superduperdb.base.exceptions.FileNotFoundException"><code class="docutils literal notranslate"><span class="pre">FileNotFoundException</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="superduperdb.base.html#superduperdb.base.exceptions.InsertQueryException"><code class="docutils literal notranslate"><span class="pre">InsertQueryException</span></code></a></li>
@@ -1112,19 +1127,6 @@
 <li class="toctree-l1"><a class="reference internal" href="superduperdb.server.html">superduperdb.server package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="superduperdb.server.html#submodules">Submodules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="superduperdb.server.html#superduperdb-server-app-module">superduperdb.server.app module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="superduperdb.server.html#module-superduperdb.server.dask_client">superduperdb.server.dask_client module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="superduperdb.server.html#superduperdb.server.dask_client.DaskClient"><code class="docutils literal notranslate"><span class="pre">DaskClient</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="superduperdb.server.html#superduperdb.server.dask_client.DaskClient.disconnect"><code class="docutils literal notranslate"><span class="pre">DaskClient.disconnect()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="superduperdb.server.html#superduperdb.server.dask_client.DaskClient.get_result"><code class="docutils literal notranslate"><span class="pre">DaskClient.get_result()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="superduperdb.server.html#superduperdb.server.dask_client.DaskClient.shutdown"><code class="docutils literal notranslate"><span class="pre">DaskClient.shutdown()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="superduperdb.server.html#superduperdb.server.dask_client.DaskClient.submit"><code class="docutils literal notranslate"><span class="pre">DaskClient.submit()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="superduperdb.server.html#superduperdb.server.dask_client.DaskClient.submit_and_forget"><code class="docutils literal notranslate"><span class="pre">DaskClient.submit_and_forget()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="superduperdb.server.html#superduperdb.server.dask_client.DaskClient.wait_all_pending_tasks"><code class="docutils literal notranslate"><span class="pre">DaskClient.wait_all_pending_tasks()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="superduperdb.server.html#superduperdb.server.dask_client.dask_client"><code class="docutils literal notranslate"><span class="pre">dask_client()</span></code></a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="superduperdb.server.html#module-superduperdb.server">Module contents</a></li>
 </ul>
 </li>
