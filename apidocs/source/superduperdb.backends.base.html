@@ -510,9 +510,9 @@ Note: This will block until the future is completed.</p>
 <dd><p>List for all pending tasks</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="py property">
 <dt class="sig sig-object py" id="superduperdb.backends.base.compute.ComputeBackend.name">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/superduperdb/backends/base/compute.html#ComputeBackend.name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#superduperdb.backends.base.compute.ComputeBackend.name" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#superduperdb.backends.base.compute.ComputeBackend.name" title="Link to this definition">#</a></dt>
 <dd><p>Return the name of current compute engine</p>
 </dd></dl>
 
@@ -534,6 +534,12 @@ Note: This will block until the future is completed.</p>
 </ul>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="superduperdb.backends.base.compute.ComputeBackend.type">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#superduperdb.backends.base.compute.ComputeBackend.type" title="Link to this definition">#</a></dt>
+<dd><p>Return the type of compute engine</p>
 </dd></dl>
 
 <dl class="py method">
@@ -1583,9 +1589,10 @@ for performing a vector search on the parent query chain inputs.</p>
 <li><a class="reference internal" href="#superduperdb.backends.base.compute.ComputeBackend.disconnect"><code class="docutils literal notranslate"><span class="pre">ComputeBackend.disconnect()</span></code></a></li>
 <li><a class="reference internal" href="#superduperdb.backends.base.compute.ComputeBackend.get_result"><code class="docutils literal notranslate"><span class="pre">ComputeBackend.get_result()</span></code></a></li>
 <li><a class="reference internal" href="#superduperdb.backends.base.compute.ComputeBackend.list_all_pending_tasks"><code class="docutils literal notranslate"><span class="pre">ComputeBackend.list_all_pending_tasks()</span></code></a></li>
-<li><a class="reference internal" href="#superduperdb.backends.base.compute.ComputeBackend.name"><code class="docutils literal notranslate"><span class="pre">ComputeBackend.name()</span></code></a></li>
+<li><a class="reference internal" href="#superduperdb.backends.base.compute.ComputeBackend.name"><code class="docutils literal notranslate"><span class="pre">ComputeBackend.name</span></code></a></li>
 <li><a class="reference internal" href="#superduperdb.backends.base.compute.ComputeBackend.shutdown"><code class="docutils literal notranslate"><span class="pre">ComputeBackend.shutdown()</span></code></a></li>
 <li><a class="reference internal" href="#superduperdb.backends.base.compute.ComputeBackend.submit"><code class="docutils literal notranslate"><span class="pre">ComputeBackend.submit()</span></code></a></li>
+<li><a class="reference internal" href="#superduperdb.backends.base.compute.ComputeBackend.type"><code class="docutils literal notranslate"><span class="pre">ComputeBackend.type</span></code></a></li>
 <li><a class="reference internal" href="#superduperdb.backends.base.compute.ComputeBackend.wait_all_pending_tasks"><code class="docutils literal notranslate"><span class="pre">ComputeBackend.wait_all_pending_tasks()</span></code></a></li>
 </ul>
 </li>

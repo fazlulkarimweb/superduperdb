@@ -325,7 +325,6 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">fast_vector_searchers</span> <span class="o">=</span> <span class="n">LoadDict</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span> <span class="nb">callable</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">initialize_vector_searcher</span>
         <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">distributed</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">CFG</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="n">Mode</span><span class="o">.</span><span class="n">Production</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span> <span class="o">=</span> <span class="n">metadata</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">artifact_store</span> <span class="o">=</span> <span class="n">artifact_store</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">databackend</span> <span class="o">=</span> <span class="n">databackend</span>
@@ -433,15 +432,15 @@
 <span class="sd">        The standard procedure is to set compute engine during initialization.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">logging</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;Change compute engine from &#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">compute</span><span class="o">.</span><span class="n">name</span><span class="p">()</span><span class="si">}</span><span class="s2">&#39; to &#39;</span><span class="si">{</span><span class="n">new</span><span class="o">.</span><span class="n">name</span><span class="p">()</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;Change compute engine from &#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">compute</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39; to &#39;</span><span class="si">{</span><span class="n">new</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
         <span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">compute</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>
         <span class="n">logging</span><span class="o">.</span><span class="n">success</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;Succesfully disconnected from compute engine: &#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">compute</span><span class="o">.</span><span class="n">name</span><span class="p">()</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;Succesfully disconnected from compute engine: &#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">compute</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
         <span class="p">)</span>
 
-        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Connecting to compute engine: </span><span class="si">{</span><span class="n">new</span><span class="o">.</span><span class="n">name</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Connecting to compute engine: </span><span class="si">{</span><span class="n">new</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">compute</span> <span class="o">=</span> <span class="n">new</span></div>
 
 
@@ -764,7 +763,7 @@
                 <span class="s1">&#39;Error while building task workflow&#39;</span>
             <span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="n">task_workflow</span><span class="o">.</span><span class="n">run_jobs</span><span class="p">(</span><span class="n">distributed</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">distributed</span><span class="p">)</span>
+            <span class="n">task_workflow</span><span class="o">.</span><span class="n">run_jobs</span><span class="p">()</span>
             <span class="k">return</span> <span class="n">task_workflow</span>
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">JobException</span><span class="p">(</span><span class="s1">&#39;Error while running task workflow&#39;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span></div>
@@ -796,7 +795,7 @@
                 <span class="s1">&#39;Error while building task workflow&#39;</span>
             <span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="n">task_workflow</span><span class="o">.</span><span class="n">run_jobs</span><span class="p">(</span><span class="n">distributed</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">distributed</span><span class="p">)</span>
+            <span class="n">task_workflow</span><span class="o">.</span><span class="n">run_jobs</span><span class="p">()</span>
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">JobException</span><span class="p">(</span><span class="s1">&#39;Error while running job&#39;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
         <span class="k">return</span> <span class="n">task_workflow</span></div>
@@ -1213,12 +1212,7 @@
 
             <span class="nb">object</span><span class="o">.</span><span class="n">post_create</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
             <span class="nb">object</span><span class="o">.</span><span class="n">on_load</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-            <span class="n">jobs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span>
-                <span class="nb">object</span><span class="o">.</span><span class="n">schedule_jobs</span><span class="p">(</span>
-                    <span class="bp">self</span><span class="p">,</span> <span class="n">dependencies</span><span class="o">=</span><span class="n">dependencies</span><span class="p">,</span> <span class="n">distributed</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">distributed</span>
-                <span class="p">)</span>
-            <span class="p">)</span>
-            <span class="k">return</span> <span class="n">jobs</span><span class="p">,</span> <span class="nb">object</span>
+            <span class="k">return</span> <span class="nb">object</span><span class="o">.</span><span class="n">schedule_jobs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dependencies</span><span class="o">=</span><span class="n">dependencies</span><span class="p">),</span> <span class="nb">object</span>
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">DatalayerException</span><span class="p">(</span>
                 <span class="sa">f</span><span class="s1">&#39;Error while adding object with id: </span><span class="si">{</span><span class="nb">object</span><span class="o">.</span><span class="n">identifier</span><span class="si">}</span><span class="s1">&#39;</span>
@@ -1449,7 +1443,6 @@
                     <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
                     <span class="n">recompute</span><span class="o">=</span><span class="n">recompute</span><span class="p">,</span>
                     <span class="n">listener_info</span><span class="o">=</span><span class="n">listener_info</span><span class="p">,</span>
-                    <span class="n">distributed</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
                 <span class="p">)</span>
             <span class="k">return</span> <span class="p">[]</span>
