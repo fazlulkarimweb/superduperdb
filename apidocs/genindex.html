@@ -277,8 +277,6 @@
 </li>
           <li><a href="source/superduperdb.base.html#superduperdb.base.config.LogType._generate_next_value_">(superduperdb.base.config.LogType method)</a>
 </li>
-          <li><a href="source/superduperdb.base.html#superduperdb.base.config.Mode._generate_next_value_">(superduperdb.base.config.Mode method)</a>
-</li>
           <li><a href="source/superduperdb.cdc.html#superduperdb.cdc.cdc.DBEvent._generate_next_value_">(superduperdb.cdc.cdc.DBEvent method)</a>
 </li>
           <li><a href="source/superduperdb.vector_search.html#superduperdb.vector_search.base.VectorIndexMeasureType._generate_next_value_">(superduperdb.vector_search.base.VectorIndexMeasureType method)</a>
@@ -538,6 +536,8 @@
           <li><a href="source/superduperdb.backends.mongodb.html#superduperdb.backends.mongodb.data_backend.MongoDataBackend.build_artifact_store">(superduperdb.backends.mongodb.data_backend.MongoDataBackend method)</a>
 </li>
         </ul></li>
+        <li><a href="source/superduperdb.base.html#superduperdb.base.build.build_compute">build_compute() (in module superduperdb.base.build)</a>
+</li>
         <li><a href="source/superduperdb.base.html#superduperdb.base.configs.build_config">build_config() (in module superduperdb.base.configs)</a>
 </li>
         <li><a href="source/superduperdb.base.html#superduperdb.base.build.build_datalayer">build_datalayer() (in module superduperdb.base.build)</a>
@@ -752,6 +752,8 @@
 </li>
         <li><a href="source/superduperdb.backends.base.html#superduperdb.backends.base.query.CompoundSelect">CompoundSelect (class in superduperdb.backends.base.query)</a>
 </li>
+        <li><a href="source/superduperdb.base.html#superduperdb.base.config.Cluster.compute">compute (superduperdb.base.config.Cluster attribute)</a>
+</li>
         <li><a href="source/superduperdb.ext.torch.html#superduperdb.ext.torch.model.Base.compute_validation_objective">compute_validation_objective() (superduperdb.ext.torch.model.Base method)</a>
 </li>
         <li><a href="source/superduperdb.backends.base.html#superduperdb.backends.base.compute.ComputeBackend">ComputeBackend (class in superduperdb.backends.base.compute)</a>
@@ -862,8 +864,6 @@
           <li><a href="source/superduperdb.misc.runnable.html#superduperdb.misc.runnable.thread.ThreadBase.daemon">(superduperdb.misc.runnable.thread.ThreadBase attribute)</a>
 </li>
         </ul></li>
-        <li><a href="source/superduperdb.base.html#superduperdb.base.config.Cluster.dask_scheduler">dask_scheduler (superduperdb.base.config.Cluster attribute)</a>
-</li>
         <li><a href="source/superduperdb.cli.html#superduperdb.cli.serve.dask_scheduler">dask_scheduler() (in module superduperdb.cli.serve)</a>
 </li>
         <li><a href="source/superduperdb.cli.html#superduperdb.cli.serve.dask_worker">dask_worker() (in module superduperdb.cli.serve)</a>
@@ -1023,8 +1023,6 @@
 </li>
         </ul></li>
         <li><a href="source/superduperdb.base.html#superduperdb.base.serializable.Serializable.deserialize">deserialize() (superduperdb.base.serializable.Serializable static method)</a>
-</li>
-        <li><a href="source/superduperdb.base.html#superduperdb.base.config.Mode.Development">Development (superduperdb.base.config.Mode attribute)</a>
 </li>
         <li><a href="source/superduperdb.components.html#superduperdb.components.model.Model.device">device (superduperdb.components.model.Model attribute)</a>
 
@@ -1522,6 +1520,8 @@
         </ul></li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="source/superduperdb.backends.base.html#superduperdb.backends.base.compute.ComputeBackend.get_local_client">get_local_client() (superduperdb.backends.base.compute.ComputeBackend method)</a>
+</li>
         <li><a href="source/superduperdb.backends.base.html#superduperdb.backends.base.metadata.MetaDataStore.get_metadata">get_metadata() (superduperdb.backends.base.metadata.MetaDataStore method)</a>
 
         <ul>
@@ -1624,8 +1624,6 @@
           <li><a href="source/superduperdb.vector_search.html#superduperdb.vector_search.base.VectorSearchConfig.id">(superduperdb.vector_search.base.VectorSearchConfig attribute)</a>
 </li>
           <li><a href="source/superduperdb.vector_search.html#superduperdb.vector_search.base.VectorSearchResult.id">(superduperdb.vector_search.base.VectorSearchResult attribute)</a>
-</li>
-          <li><a href="source/superduperdb.vector_search.server.html#superduperdb.vector_search.server.app.VectorItem.id">(superduperdb.vector_search.server.app.VectorItem attribute)</a>
 </li>
         </ul></li>
         <li><a href="source/superduperdb.backends.base.html#superduperdb.backends.base.data_backend.BaseDataBackend.id_field">id_field (superduperdb.backends.base.data_backend.BaseDataBackend attribute)</a>
@@ -1789,6 +1787,8 @@
 </li>
         </ul></li>
         <li><a href="source/superduperdb.base.html#superduperdb.base.exceptions.InsertQueryException">InsertQueryException</a>
+</li>
+        <li><a href="source/superduperdb.server.html#superduperdb.server.app.Server.install_signal_handlers">install_signal_handlers() (superduperdb.server.app.Server method)</a>
 </li>
         <li><a href="source/superduperdb.ext.torch.html#superduperdb.ext.torch.model.Base.is_batch">is_batch (superduperdb.ext.torch.model.Base attribute)</a>
 </li>
@@ -1983,7 +1983,11 @@
 </li>
         </ul></li>
         <li><a href="source/superduperdb.cli.html#superduperdb.cli.serve.local_cluster">local_cluster() (in module superduperdb.cli.serve)</a>
+
+        <ul>
+          <li><a href="source/superduperdb.server.html#superduperdb.server.cluster.local_cluster">(in module superduperdb.server.cluster)</a>
 </li>
+        </ul></li>
         <li><a href="source/superduperdb.backends.local.html#superduperdb.backends.local.compute.LocalComputeBackend">LocalComputeBackend (class in superduperdb.backends.local.compute)</a>
 </li>
         <li><a href="source/superduperdb.ext.torch.html#superduperdb.ext.torch.model.Base.log">log() (superduperdb.ext.torch.model.Base method)</a>
@@ -2086,10 +2090,6 @@
           <li><a href="source/superduperdb.html#superduperdb.Model.metrics">(superduperdb.Model attribute)</a>
 </li>
         </ul></li>
-        <li><a href="source/superduperdb.base.html#superduperdb.base.config.Mode">Mode (class in superduperdb.base.config)</a>
-</li>
-        <li><a href="source/superduperdb.base.html#superduperdb.base.config.Config.mode">mode (superduperdb.base.config.Config attribute)</a>
-</li>
         <li><a href="source/superduperdb.html#superduperdb.Model">Model (class in superduperdb)</a>
 
         <ul>
@@ -2131,8 +2131,6 @@
 </li>
           <li><a href="source/superduperdb.html#superduperdb.JSONable.model_config">(superduperdb.JSONable attribute)</a>
 </li>
-          <li><a href="source/superduperdb.vector_search.server.html#superduperdb.vector_search.server.app.VectorItem.model_config">(superduperdb.vector_search.server.app.VectorItem attribute)</a>
-</li>
         </ul></li>
         <li><a href="source/superduperdb.base.html#superduperdb.base.config.BaseConfigJSONable.model_fields">model_fields (superduperdb.base.config.BaseConfigJSONable attribute)</a>
 
@@ -2146,8 +2144,6 @@
           <li><a href="source/superduperdb.base.html#superduperdb.base.jsonable.JSONable.model_fields">(superduperdb.base.jsonable.JSONable attribute)</a>
 </li>
           <li><a href="source/superduperdb.html#superduperdb.JSONable.model_fields">(superduperdb.JSONable attribute)</a>
-</li>
-          <li><a href="source/superduperdb.vector_search.server.html#superduperdb.vector_search.server.app.VectorItem.model_fields">(superduperdb.vector_search.server.app.VectorItem attribute)</a>
 </li>
         </ul></li>
         <li><a href="source/superduperdb.components.html#superduperdb.components.model.Model.model_to_device_method">model_to_device_method (superduperdb.components.model.Model attribute)</a>
@@ -2292,13 +2288,9 @@
 </li>
           <li><a href="source/superduperdb.cdc.html#module-superduperdb.cdc">superduperdb.cdc</a>
 </li>
-          <li><a href="source/superduperdb.cdc.html#module-superduperdb.cdc.app">superduperdb.cdc.app</a>
-</li>
           <li><a href="source/superduperdb.cdc.html#module-superduperdb.cdc.cdc">superduperdb.cdc.cdc</a>
 </li>
           <li><a href="source/superduperdb.cli.html#module-superduperdb.cli">superduperdb.cli</a>
-</li>
-          <li><a href="source/superduperdb.cli.html#module-superduperdb.cli.cdc">superduperdb.cli.cdc</a>
 </li>
           <li><a href="source/superduperdb.cli.html#module-superduperdb.cli.config">superduperdb.cli.config</a>
 </li>
@@ -2307,8 +2299,6 @@
           <li><a href="source/superduperdb.cli.html#module-superduperdb.cli.serve">superduperdb.cli.serve</a>
 </li>
           <li><a href="source/superduperdb.cli.html#module-superduperdb.cli.stack">superduperdb.cli.stack</a>
-</li>
-          <li><a href="source/superduperdb.cli.html#module-superduperdb.cli.vector_search">superduperdb.cli.vector_search</a>
 </li>
           <li><a href="source/superduperdb.components.html#module-superduperdb.components">superduperdb.components</a>
 </li>
@@ -2416,6 +2406,8 @@
 </li>
           <li><a href="source/superduperdb.server.html#module-superduperdb.server.app">superduperdb.server.app</a>
 </li>
+          <li><a href="source/superduperdb.server.html#module-superduperdb.server.cluster">superduperdb.server.cluster</a>
+</li>
           <li><a href="source/superduperdb.vector_search.html#module-superduperdb.vector_search">superduperdb.vector_search</a>
 </li>
           <li><a href="source/superduperdb.vector_search.html#module-superduperdb.vector_search.base">superduperdb.vector_search.base</a>
@@ -2427,8 +2419,6 @@
           <li><a href="source/superduperdb.vector_search.html#module-superduperdb.vector_search.lance">superduperdb.vector_search.lance</a>
 </li>
           <li><a href="source/superduperdb.vector_search.server.html#module-superduperdb.vector_search.server">superduperdb.vector_search.server</a>
-</li>
-          <li><a href="source/superduperdb.vector_search.server.html#module-superduperdb.vector_search.server.app">superduperdb.vector_search.server.app</a>
 </li>
           <li><a href="source/superduperdb.vector_search.server.html#module-superduperdb.vector_search.server.service">superduperdb.vector_search.server.service</a>
 </li>
@@ -2584,15 +2574,11 @@
         <ul>
           <li><a href="source/superduperdb.components.html#superduperdb.components.dataset.Dataset.on_load">(superduperdb.components.dataset.Dataset method)</a>
 </li>
-          <li><a href="source/superduperdb.components.html#superduperdb.components.listener.Listener.on_load">(superduperdb.components.listener.Listener method)</a>
-</li>
           <li><a href="source/superduperdb.components.html#superduperdb.components.model.Model.on_load">(superduperdb.components.model.Model method)</a>
 </li>
           <li><a href="source/superduperdb.components.html#superduperdb.components.vector_index.VectorIndex.on_load">(superduperdb.components.vector_index.VectorIndex method)</a>
 </li>
           <li><a href="source/superduperdb.html#superduperdb.Dataset.on_load">(superduperdb.Dataset method)</a>
-</li>
-          <li><a href="source/superduperdb.html#superduperdb.Listener.on_load">(superduperdb.Listener method)</a>
 </li>
           <li><a href="source/superduperdb.html#superduperdb.Model.on_load">(superduperdb.Model method)</a>
 </li>
@@ -2761,6 +2747,12 @@
         </ul></li>
         <li><a href="source/superduperdb.backends.base.html#superduperdb.backends.base.query.CompoundSelect.post_like">post_like (superduperdb.backends.base.query.CompoundSelect attribute)</a>
 </li>
+        <li><a href="source/superduperdb.components.html#superduperdb.components.listener.Listener.post_load">post_load() (superduperdb.components.listener.Listener method)</a>
+
+        <ul>
+          <li><a href="source/superduperdb.html#superduperdb.Listener.post_load">(superduperdb.Listener method)</a>
+</li>
+        </ul></li>
         <li><a href="source/superduperdb.components.html#superduperdb.components.model.Model.postprocess">postprocess (superduperdb.components.model.Model attribute)</a>
 
         <ul>
@@ -2809,14 +2801,16 @@
 </li>
         <li><a href="source/superduperdb.misc.runnable.html#superduperdb.misc.runnable.thread.ThreadBase.pre_run">pre_run() (superduperdb.misc.runnable.thread.ThreadBase method)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="source/superduperdb.server.html#superduperdb.server.app.SuperDuperApp.pre_start">pre_start() (superduperdb.server.app.SuperDuperApp method)</a>
+</li>
         <li><a href="source/superduperdb.base.html#superduperdb.base.datalayer.Datalayer.predict">predict() (superduperdb.base.datalayer.Datalayer method)</a>
 
         <ul>
           <li><a href="source/superduperdb.components.html#superduperdb.components.model.Predictor.predict">(superduperdb.components.model.Predictor method)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="source/superduperdb.components.html#superduperdb.components.listener.Listener.predict_kwargs">predict_kwargs (superduperdb.components.listener.Listener attribute)</a>
 
         <ul>
@@ -2879,8 +2873,6 @@
           <li><a href="source/superduperdb.backends.mongodb.html#superduperdb.backends.mongodb.query.Collection.primary_id">(superduperdb.backends.mongodb.query.Collection attribute)</a>
 </li>
         </ul></li>
-        <li><a href="source/superduperdb.base.html#superduperdb.base.config.Mode.Production">Production (superduperdb.base.config.Mode attribute)</a>
-</li>
         <li><a href="source/superduperdb.ext.anthropic.html#superduperdb.ext.anthropic.AnthropicCompletions.prompt">prompt (superduperdb.ext.anthropic.AnthropicCompletions attribute)</a>
 
         <ul>
@@ -3091,6 +3083,8 @@
           <li><a href="source/superduperdb.misc.runnable.html#superduperdb.misc.runnable.thread.ThreadBase.run">(superduperdb.misc.runnable.thread.ThreadBase method)</a>
 </li>
         </ul></li>
+        <li><a href="source/superduperdb.server.html#superduperdb.server.app.Server.run_in_thread">run_in_thread() (superduperdb.server.app.Server method)</a>
+</li>
         <li><a href="source/superduperdb.misc.runnable.html#superduperdb.misc.runnable.runnable.Runnable">Runnable (class in superduperdb.misc.runnable.runnable)</a>
 </li>
         <li><a href="source/superduperdb.misc.runnable.html#superduperdb.misc.runnable.collection.HasRunnables.runnables">runnables (superduperdb.misc.runnable.collection.HasRunnables attribute)</a>
@@ -3327,7 +3321,7 @@
 </li>
         <li><a href="source/superduperdb.misc.html#superduperdb.misc.serialization.Serializers.serializers">serializers (superduperdb.misc.serialization.Serializers attribute)</a>
 </li>
-        <li><a href="source/superduperdb.cli.html#superduperdb.cli.serve.serve">serve() (in module superduperdb.cli.serve)</a>
+        <li><a href="source/superduperdb.server.html#superduperdb.server.app.Server">Server (class in superduperdb.server.app)</a>
 </li>
         <li><a href="source/superduperdb.base.html#superduperdb.base.datalayer.Datalayer.server_mode">server_mode (superduperdb.base.datalayer.Datalayer property)</a>
 </li>
@@ -3467,6 +3461,8 @@
           <li><a href="source/superduperdb.misc.runnable.html#superduperdb.misc.runnable.runnable.Runnable.stop">(superduperdb.misc.runnable.runnable.Runnable method)</a>
 </li>
           <li><a href="source/superduperdb.misc.runnable.html#superduperdb.misc.runnable.thread.ThreadBase.stop">(superduperdb.misc.runnable.thread.ThreadBase method)</a>
+</li>
+          <li><a href="source/superduperdb.server.html#superduperdb.server.app.Server.stop">(superduperdb.server.app.Server method)</a>
 </li>
         </ul></li>
         <li><a href="source/superduperdb.base.html#superduperdb.base.config.Retry.stop_after_attempt">stop_after_attempt (superduperdb.base.config.Retry attribute)</a>
@@ -3619,6 +3615,8 @@
           <li><a href="source/superduperdb.backends.ibis.html#module-superduperdb.backends.ibis.query">module</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li>
     superduperdb.backends.local
 
@@ -3626,8 +3624,6 @@
           <li><a href="source/superduperdb.backends.local.html#module-superduperdb.backends.local">module</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li>
     superduperdb.backends.local.artifacts
 
@@ -3811,13 +3807,6 @@
 </li>
         </ul></li>
         <li>
-    superduperdb.cdc.app
-
-        <ul>
-          <li><a href="source/superduperdb.cdc.html#module-superduperdb.cdc.app">module</a>
-</li>
-        </ul></li>
-        <li>
     superduperdb.cdc.cdc
 
         <ul>
@@ -3829,13 +3818,6 @@
 
         <ul>
           <li><a href="source/superduperdb.cli.html#module-superduperdb.cli">module</a>
-</li>
-        </ul></li>
-        <li>
-    superduperdb.cli.cdc
-
-        <ul>
-          <li><a href="source/superduperdb.cli.html#module-superduperdb.cli.cdc">module</a>
 </li>
         </ul></li>
         <li>
@@ -3864,13 +3846,6 @@
 
         <ul>
           <li><a href="source/superduperdb.cli.html#module-superduperdb.cli.stack">module</a>
-</li>
-        </ul></li>
-        <li>
-    superduperdb.cli.vector_search
-
-        <ul>
-          <li><a href="source/superduperdb.cli.html#module-superduperdb.cli.vector_search">module</a>
 </li>
         </ul></li>
         <li>
@@ -4245,6 +4220,13 @@
 </li>
         </ul></li>
         <li>
+    superduperdb.server.cluster
+
+        <ul>
+          <li><a href="source/superduperdb.server.html#module-superduperdb.server.cluster">module</a>
+</li>
+        </ul></li>
+        <li>
     superduperdb.vector_search
 
         <ul>
@@ -4284,13 +4266,6 @@
 
         <ul>
           <li><a href="source/superduperdb.vector_search.server.html#module-superduperdb.vector_search.server">module</a>
-</li>
-        </ul></li>
-        <li>
-    superduperdb.vector_search.server.app
-
-        <ul>
-          <li><a href="source/superduperdb.vector_search.server.html#module-superduperdb.vector_search.server.app">module</a>
 </li>
         </ul></li>
         <li>
@@ -4746,11 +4721,7 @@
         <li><a href="source/superduperdb.base.html#superduperdb.base.serializable.Serializable.variables">variables (superduperdb.base.serializable.Serializable property)</a>
 </li>
         <li><a href="source/superduperdb.vector_search.html#superduperdb.vector_search.base.VectorItem.vector">vector (superduperdb.vector_search.base.VectorItem attribute)</a>
-
-        <ul>
-          <li><a href="source/superduperdb.vector_search.server.html#superduperdb.vector_search.server.app.VectorItem.vector">(superduperdb.vector_search.server.app.VectorItem attribute)</a>
 </li>
-        </ul></li>
         <li><a href="source/superduperdb.html#superduperdb.vector">vector() (in module superduperdb)</a>
 
         <ul>
@@ -4780,17 +4751,13 @@
         <li><a href="source/superduperdb.vector_search.html#superduperdb.vector_search.base.VectorIndexMeasureType">VectorIndexMeasureType (class in superduperdb.vector_search.base)</a>
 </li>
         <li><a href="source/superduperdb.vector_search.html#superduperdb.vector_search.base.VectorItem">VectorItem (class in superduperdb.vector_search.base)</a>
-
-        <ul>
-          <li><a href="source/superduperdb.vector_search.server.html#superduperdb.vector_search.server.app.VectorItem">(class in superduperdb.vector_search.server.app)</a>
 </li>
-        </ul></li>
         <li><a href="source/superduperdb.vector_search.html#superduperdb.vector_search.base.VectorSearchConfig">VectorSearchConfig (class in superduperdb.vector_search.base)</a>
+</li>
+        <li><a href="source/superduperdb.base.html#superduperdb.base.exceptions.VectorSearchException">VectorSearchException</a>
 </li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="source/superduperdb.base.html#superduperdb.base.exceptions.VectorSearchException">VectorSearchException</a>
-</li>
         <li><a href="source/superduperdb.vector_search.html#superduperdb.vector_search.base.VectorSearchResult">VectorSearchResult (class in superduperdb.vector_search.base)</a>
 </li>
         <li><a href="source/superduperdb.backends.base.html#superduperdb.backends.base.query.Insert.verbose">verbose (superduperdb.backends.base.query.Insert attribute)</a>
