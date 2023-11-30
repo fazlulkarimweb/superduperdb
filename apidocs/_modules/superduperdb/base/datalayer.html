@@ -351,7 +351,7 @@
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BaseVectorSearcher</span><span class="p">:</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">searcher_type</span> <span class="o">=</span> <span class="n">searcher_type</span> <span class="ow">or</span> <span class="n">s</span><span class="o">.</span><span class="n">CFG</span><span class="o">.</span><span class="n">vector_search</span>
-            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;loading of vectors of vector-index: </span><span class="si">{</span><span class="n">identifier</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;loading of vectors of vector-index: &#39;</span><span class="si">{</span><span class="n">identifier</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
             <span class="n">vi</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vector_indices</span><span class="p">[</span><span class="n">identifier</span><span class="p">]</span>
 
             <span class="n">clt</span> <span class="o">=</span> <span class="n">vi</span><span class="o">.</span><span class="n">indexing_listener</span><span class="o">.</span><span class="n">select</span><span class="o">.</span><span class="n">table_or_collection</span>
@@ -377,7 +377,7 @@
             <span class="k">return</span> <span class="n">FastVectorSearcher</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vector_comparison</span><span class="p">,</span> <span class="n">vi</span><span class="o">.</span><span class="n">identifier</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">VectorSearchException</span><span class="p">(</span>
-                <span class="s1">&#39;Failed to initialize vector search index </span><span class="si">{identifier}</span><span class="s1">&#39;</span>
+                <span class="sa">f</span><span class="s2">&quot;Failed to initialize vector search index &#39;</span><span class="si">{</span><span class="n">identifier</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
             <span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span></div>
 
 
@@ -413,7 +413,11 @@
 
                 <span class="nb">id</span> <span class="o">=</span> <span class="n">record</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">databackend</span><span class="o">.</span><span class="n">id_field</span><span class="p">]</span>
                 <span class="k">assert</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">vi</span><span class="o">.</span><span class="n">indexing_listener</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span>
-                <span class="n">h</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">outputs</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">vi</span><span class="o">.</span><span class="n">indexing_listener</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">identifier</span><span class="p">)</span>
+                <span class="n">h</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">outputs</span><span class="p">(</span>
+                    <span class="n">key</span><span class="p">,</span>
+                    <span class="n">vi</span><span class="o">.</span><span class="n">indexing_listener</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">identifier</span><span class="p">,</span>
+                    <span class="n">version</span><span class="o">=</span><span class="n">vi</span><span class="o">.</span><span class="n">indexing_listener</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">version</span><span class="p">,</span>
+                <span class="p">)</span>
                 <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">Encodable</span><span class="p">):</span>
                     <span class="n">h</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">x</span>
                 <span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">VectorItem</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="nb">id</span><span class="p">),</span> <span class="n">vector</span><span class="o">=</span><span class="n">h</span><span class="p">))</span>
@@ -1332,19 +1336,19 @@
                 <span class="n">n_download_workers</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">get_metadata</span><span class="p">(</span>
                     <span class="n">key</span><span class="o">=</span><span class="s1">&#39;n_download_workers&#39;</span>
                 <span class="p">)</span>
-            <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+            <span class="k">except</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">MetadatastoreException</span><span class="p">:</span>
                 <span class="n">n_download_workers</span> <span class="o">=</span> <span class="mi">0</span>
 
         <span class="k">if</span> <span class="n">headers</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">headers</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">get_metadata</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s1">&#39;headers&#39;</span><span class="p">)</span>
-            <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+            <span class="k">except</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">MetadatastoreException</span><span class="p">:</span>
                 <span class="n">headers</span> <span class="o">=</span> <span class="mi">0</span>
 
         <span class="k">if</span> <span class="n">timeout</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">timeout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">get_metadata</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s1">&#39;download_timeout&#39;</span><span class="p">)</span>
-            <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+            <span class="k">except</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">MetadatastoreException</span><span class="p">:</span>
                 <span class="n">timeout</span> <span class="o">=</span> <span class="kc">None</span>
 
         <span class="k">def</span> <span class="nf">download_update</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
@@ -1530,8 +1534,30 @@
             <span class="k">return</span> <span class="n">vi</span><span class="o">.</span><span class="n">get_nearest</span><span class="p">(</span><span class="n">like</span><span class="p">,</span> <span class="n">db</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">ids</span><span class="o">=</span><span class="n">ids</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="n">outs</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">VectorSearchException</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s1">&#39;Error while vector search on index </span><span class="si">{</span><span class="n">vector_index</span><span class="si">}</span><span class="s1">&#39;</span>
+                <span class="sa">f</span><span class="s2">&quot;Error while vector search on index &#39;</span><span class="si">{</span><span class="n">vector_index</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
             <span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span></div>
+
+
+<div class="viewcode-block" id="Datalayer.close">
+<a class="viewcode-back" href="../../../source/superduperdb.base.html#superduperdb.base.datalayer.Datalayer.close">[docs]</a>
+    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Gracefully shutdown the Datalayer</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Disconnect from Data Store&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">databackend</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>
+
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Disconnect from Metadata Store&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>
+
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Disconnect from Artifact Store&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">artifact_store</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>
+
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Disconnect from Compute Engine&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">compute</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>
+
+        <span class="c1"># TODO: gracefully close all opened connections</span>
+        <span class="k">return</span></div>
 </div>
 
 

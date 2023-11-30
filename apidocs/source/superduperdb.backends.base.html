@@ -276,6 +276,12 @@
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="superduperdb.backends.base.artifact.ArtifactStore.disconnect">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">disconnect</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/superduperdb/backends/base/artifact.html#ArtifactStore.disconnect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#superduperdb.backends.base.artifact.ArtifactStore.disconnect" title="Link to this definition">#</a></dt>
+<dd><p>Disconnect the client</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="superduperdb.backends.base.artifact.ArtifactStore.drop">
 <em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">drop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/superduperdb/backends/base/artifact.html#ArtifactStore.drop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#superduperdb.backends.base.artifact.ArtifactStore.drop" title="Link to this definition">#</a></dt>
 <dd><p>Drop the artifact store.</p>
@@ -586,6 +592,12 @@ Note: This will block until the future is completed.</p>
 <dd></dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="superduperdb.backends.base.data_backend.BaseDataBackend.disconnect">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">disconnect</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/superduperdb/backends/base/data_backend.html#BaseDataBackend.disconnect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#superduperdb.backends.base.data_backend.BaseDataBackend.disconnect" title="Link to this definition">#</a></dt>
+<dd><p>Disconnect the client</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="superduperdb.backends.base.data_backend.BaseDataBackend.drop">
 <em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">drop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/superduperdb/backends/base/data_backend.html#BaseDataBackend.drop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#superduperdb.backends.base.data_backend.BaseDataBackend.drop" title="Link to this definition">#</a></dt>
 <dd><p>Drop the databackend.</p>
@@ -696,6 +708,12 @@ Note: This will block until the future is completed.</p>
 </ul>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="superduperdb.backends.base.metadata.MetaDataStore.disconnect">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">disconnect</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/superduperdb/backends/base/metadata.html#MetaDataStore.disconnect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#superduperdb.backends.base.metadata.MetaDataStore.disconnect" title="Link to this definition">#</a></dt>
+<dd><p>Disconnect the client</p>
 </dd></dl>
 
 <dl class="py method">
@@ -1565,6 +1583,7 @@ for performing a vector search on the parent query chain inputs.</p>
 <li><a class="reference internal" href="#superduperdb.backends.base.artifact.ArtifactStore"><code class="docutils literal notranslate"><span class="pre">ArtifactStore</span></code></a><ul>
 <li><a class="reference internal" href="#superduperdb.backends.base.artifact.ArtifactStore.create"><code class="docutils literal notranslate"><span class="pre">ArtifactStore.create()</span></code></a></li>
 <li><a class="reference internal" href="#superduperdb.backends.base.artifact.ArtifactStore.delete"><code class="docutils literal notranslate"><span class="pre">ArtifactStore.delete()</span></code></a></li>
+<li><a class="reference internal" href="#superduperdb.backends.base.artifact.ArtifactStore.disconnect"><code class="docutils literal notranslate"><span class="pre">ArtifactStore.disconnect()</span></code></a></li>
 <li><a class="reference internal" href="#superduperdb.backends.base.artifact.ArtifactStore.drop"><code class="docutils literal notranslate"><span class="pre">ArtifactStore.drop()</span></code></a></li>
 <li><a class="reference internal" href="#superduperdb.backends.base.artifact.ArtifactStore.load"><code class="docutils literal notranslate"><span class="pre">ArtifactStore.load()</span></code></a></li>
 <li><a class="reference internal" href="#superduperdb.backends.base.artifact.ArtifactStore.load_artifact"><code class="docutils literal notranslate"><span class="pre">ArtifactStore.load_artifact()</span></code></a></li>
@@ -1611,6 +1630,7 @@ for performing a vector search on the parent query chain inputs.</p>
 <li><a class="reference internal" href="#superduperdb.backends.base.data_backend.BaseDataBackend.build_metadata"><code class="docutils literal notranslate"><span class="pre">BaseDataBackend.build_metadata()</span></code></a></li>
 <li><a class="reference internal" href="#superduperdb.backends.base.data_backend.BaseDataBackend.create_model_table_or_collection"><code class="docutils literal notranslate"><span class="pre">BaseDataBackend.create_model_table_or_collection()</span></code></a></li>
 <li><a class="reference internal" href="#superduperdb.backends.base.data_backend.BaseDataBackend.db"><code class="docutils literal notranslate"><span class="pre">BaseDataBackend.db</span></code></a></li>
+<li><a class="reference internal" href="#superduperdb.backends.base.data_backend.BaseDataBackend.disconnect"><code class="docutils literal notranslate"><span class="pre">BaseDataBackend.disconnect()</span></code></a></li>
 <li><a class="reference internal" href="#superduperdb.backends.base.data_backend.BaseDataBackend.drop"><code class="docutils literal notranslate"><span class="pre">BaseDataBackend.drop()</span></code></a></li>
 <li><a class="reference internal" href="#superduperdb.backends.base.data_backend.BaseDataBackend.get_table_or_collection"><code class="docutils literal notranslate"><span class="pre">BaseDataBackend.get_table_or_collection()</span></code></a></li>
 <li><a class="reference internal" href="#superduperdb.backends.base.data_backend.BaseDataBackend.id_field"><code class="docutils literal notranslate"><span class="pre">BaseDataBackend.id_field</span></code></a></li>
@@ -1628,6 +1648,7 @@ for performing a vector search on the parent query chain inputs.</p>
 <li><a class="reference internal" href="#superduperdb.backends.base.metadata.MetaDataStore.create_job"><code class="docutils literal notranslate"><span class="pre">MetaDataStore.create_job()</span></code></a></li>
 <li><a class="reference internal" href="#superduperdb.backends.base.metadata.MetaDataStore.create_parent_child"><code class="docutils literal notranslate"><span class="pre">MetaDataStore.create_parent_child()</span></code></a></li>
 <li><a class="reference internal" href="#superduperdb.backends.base.metadata.MetaDataStore.delete_component_version"><code class="docutils literal notranslate"><span class="pre">MetaDataStore.delete_component_version()</span></code></a></li>
+<li><a class="reference internal" href="#superduperdb.backends.base.metadata.MetaDataStore.disconnect"><code class="docutils literal notranslate"><span class="pre">MetaDataStore.disconnect()</span></code></a></li>
 <li><a class="reference internal" href="#superduperdb.backends.base.metadata.MetaDataStore.drop"><code class="docutils literal notranslate"><span class="pre">MetaDataStore.drop()</span></code></a></li>
 <li><a class="reference internal" href="#superduperdb.backends.base.metadata.MetaDataStore.get_component"><code class="docutils literal notranslate"><span class="pre">MetaDataStore.get_component()</span></code></a></li>
 <li><a class="reference internal" href="#superduperdb.backends.base.metadata.MetaDataStore.get_component_version_parents"><code class="docutils literal notranslate"><span class="pre">MetaDataStore.get_component_version_parents()</span></code></a></li>
