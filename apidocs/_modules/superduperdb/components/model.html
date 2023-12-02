@@ -251,11 +251,9 @@
 <span class="kn">from</span> <span class="nn">superduperdb.backends.ibis.field_types</span> <span class="kn">import</span> <span class="n">FieldType</span>
 <span class="kn">from</span> <span class="nn">superduperdb.backends.ibis.query</span> <span class="kn">import</span> <span class="n">IbisCompoundSelect</span><span class="p">,</span> <span class="n">Table</span>
 <span class="kn">from</span> <span class="nn">superduperdb.backends.query_dataset</span> <span class="kn">import</span> <span class="n">QueryDataset</span>
-<span class="kn">from</span> <span class="nn">superduperdb.base</span> <span class="kn">import</span> <span class="n">exceptions</span>
 <span class="kn">from</span> <span class="nn">superduperdb.base.artifact</span> <span class="kn">import</span> <span class="n">Artifact</span>
 <span class="kn">from</span> <span class="nn">superduperdb.base.serializable</span> <span class="kn">import</span> <span class="n">Serializable</span>
 <span class="kn">from</span> <span class="nn">superduperdb.components.component</span> <span class="kn">import</span> <span class="n">Component</span>
-<span class="kn">from</span> <span class="nn">superduperdb.components.dataset</span> <span class="kn">import</span> <span class="n">Dataset</span>
 <span class="kn">from</span> <span class="nn">superduperdb.components.encoder</span> <span class="kn">import</span> <span class="n">Encoder</span>
 <span class="kn">from</span> <span class="nn">superduperdb.components.metric</span> <span class="kn">import</span> <span class="n">Metric</span>
 <span class="kn">from</span> <span class="nn">superduperdb.components.schema</span> <span class="kn">import</span> <span class="n">Schema</span>
@@ -264,6 +262,7 @@
 
 <span class="k">if</span> <span class="n">t</span><span class="o">.</span><span class="n">TYPE_CHECKING</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">superduperdb.base.datalayer</span> <span class="kn">import</span> <span class="n">Datalayer</span>
+    <span class="kn">from</span> <span class="nn">superduperdb.components.dataset</span> <span class="kn">import</span> <span class="n">Dataset</span>
 
 <span class="n">EncoderArg</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="n">Encoder</span><span class="p">,</span> <span class="n">FieldType</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
 <span class="n">ObjectsArg</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">Sequence</span><span class="p">[</span><span class="n">t</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">,</span> <span class="n">Artifact</span><span class="p">]]</span>
@@ -449,89 +448,74 @@
         <span class="n">overwrite</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
         <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">:</span>
-        <span class="n">predict_type</span> <span class="o">=</span> <span class="s1">&#39;batch prediction&#39;</span>
+        <span class="k">if</span> <span class="n">one</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="n">db</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;db must be None when ``one=True`` (direct call)&#39;</span>
 
-        <span class="k">try</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">one</span><span class="p">:</span>
-                <span class="k">assert</span> <span class="n">db</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;db must be None when ``one=True`` (direct call)&#39;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">select</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="n">select</span> <span class="o">=</span> <span class="n">Serializable</span><span class="o">.</span><span class="n">deserialize</span><span class="p">(</span><span class="n">select</span><span class="p">)</span>
 
-            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">select</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-                <span class="n">select</span> <span class="o">=</span> <span class="n">Serializable</span><span class="o">.</span><span class="n">deserialize</span><span class="p">(</span><span class="n">select</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">select</span><span class="p">,</span> <span class="n">Table</span><span class="p">):</span>
+            <span class="n">select</span> <span class="o">=</span> <span class="n">select</span><span class="o">.</span><span class="n">to_query</span><span class="p">()</span>
 
-            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">select</span><span class="p">,</span> <span class="n">Table</span><span class="p">):</span>
-                <span class="n">select</span> <span class="o">=</span> <span class="n">select</span><span class="o">.</span><span class="n">to_query</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">db</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">select</span><span class="p">,</span> <span class="n">IbisCompoundSelect</span><span class="p">):</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">_</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">get_query</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">hash</span><span class="p">(</span><span class="n">select</span><span class="p">)))</span>
+                <span class="k">except</span> <span class="n">NonExistentMetadataError</span><span class="p">:</span>
+                    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Query </span><span class="si">{</span><span class="n">select</span><span class="si">}</span><span class="s1"> not found in metadata, adding...&#39;</span><span class="p">)</span>
+                    <span class="n">db</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">add_query</span><span class="p">(</span><span class="n">select</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">identifier</span><span class="p">)</span>
+                    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Done&#39;</span><span class="p">)</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Adding model </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">identifier</span><span class="si">}</span><span class="s1"> to db&#39;</span><span class="p">)</span>
+            <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Component</span><span class="p">)</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
-            <span class="k">if</span> <span class="n">db</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">select</span><span class="p">,</span> <span class="n">IbisCompoundSelect</span><span class="p">):</span>
-                    <span class="k">try</span><span class="p">:</span>
-                        <span class="n">_</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">get_query</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">hash</span><span class="p">(</span><span class="n">select</span><span class="p">)))</span>
-                    <span class="k">except</span> <span class="n">NonExistentMetadataError</span><span class="p">:</span>
-                        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Query </span><span class="si">{</span><span class="n">select</span><span class="si">}</span><span class="s1"> not found in metadata, adding...&#39;</span><span class="p">)</span>
-                        <span class="n">db</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">add_query</span><span class="p">(</span><span class="n">select</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">identifier</span><span class="p">)</span>
-                        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Done&#39;</span><span class="p">)</span>
-                <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Adding model </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">identifier</span><span class="si">}</span><span class="s1"> to db&#39;</span><span class="p">)</span>
-                <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Component</span><span class="p">)</span>
-                <span class="n">db</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">listen</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="n">db</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+            <span class="k">assert</span> <span class="n">select</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_predict_and_listen</span><span class="p">(</span>
+                <span class="n">X</span><span class="o">=</span><span class="n">X</span><span class="p">,</span>
+                <span class="n">db</span><span class="o">=</span><span class="n">db</span><span class="p">,</span>
+                <span class="n">select</span><span class="o">=</span><span class="n">select</span><span class="p">,</span>
+                <span class="n">max_chunk_size</span><span class="o">=</span><span class="n">max_chunk_size</span><span class="p">,</span>
+                <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+            <span class="p">)</span>
 
-            <span class="k">if</span> <span class="n">listen</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">db</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">db</span><span class="o">.</span><span class="n">compute</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">&#39;distributed&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_predict_job</span><span class="p">(</span>
+                <span class="n">X</span><span class="p">,</span>
+                <span class="n">select</span><span class="o">=</span><span class="n">select</span><span class="p">,</span>
+                <span class="n">ids</span><span class="o">=</span><span class="n">ids</span><span class="p">,</span>
+                <span class="n">max_chunk_size</span><span class="o">=</span><span class="n">max_chunk_size</span><span class="p">,</span>
+                <span class="n">overwrite</span><span class="o">=</span><span class="n">overwrite</span><span class="p">,</span>
+                <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+            <span class="p">)(</span><span class="n">db</span><span class="o">=</span><span class="n">db</span><span class="p">,</span> <span class="n">dependencies</span><span class="o">=</span><span class="n">dependencies</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">select</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">ids</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="k">assert</span> <span class="n">db</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-                <span class="k">assert</span> <span class="n">select</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_predict_and_listen</span><span class="p">(</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_predict_with_select</span><span class="p">(</span>
                     <span class="n">X</span><span class="o">=</span><span class="n">X</span><span class="p">,</span>
+                    <span class="n">select</span><span class="o">=</span><span class="n">select</span><span class="p">,</span>
                     <span class="n">db</span><span class="o">=</span><span class="n">db</span><span class="p">,</span>
-                    <span class="n">select</span><span class="o">=</span><span class="n">select</span><span class="p">,</span>
-                    <span class="n">max_chunk_size</span><span class="o">=</span><span class="n">max_chunk_size</span><span class="p">,</span>
-                    <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
-                <span class="p">)</span>
-
-            <span class="k">if</span> <span class="n">db</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">db</span><span class="o">.</span><span class="n">compute</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">&#39;distributed&#39;</span><span class="p">:</span>
-                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_predict_job</span><span class="p">(</span>
-                    <span class="n">X</span><span class="p">,</span>
-                    <span class="n">select</span><span class="o">=</span><span class="n">select</span><span class="p">,</span>
-                    <span class="n">ids</span><span class="o">=</span><span class="n">ids</span><span class="p">,</span>
+                    <span class="n">in_memory</span><span class="o">=</span><span class="n">in_memory</span><span class="p">,</span>
                     <span class="n">max_chunk_size</span><span class="o">=</span><span class="n">max_chunk_size</span><span class="p">,</span>
                     <span class="n">overwrite</span><span class="o">=</span><span class="n">overwrite</span><span class="p">,</span>
                     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
-                <span class="p">)(</span><span class="n">db</span><span class="o">=</span><span class="n">db</span><span class="p">,</span> <span class="n">dependencies</span><span class="o">=</span><span class="n">dependencies</span><span class="p">)</span>
+                <span class="p">)</span>
+            <span class="k">elif</span> <span class="n">select</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">ids</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">assert</span> <span class="n">db</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_predict_with_select_and_ids</span><span class="p">(</span>
+                    <span class="n">X</span><span class="o">=</span><span class="n">X</span><span class="p">,</span>
+                    <span class="n">select</span><span class="o">=</span><span class="n">select</span><span class="p">,</span>
+                    <span class="n">ids</span><span class="o">=</span><span class="n">ids</span><span class="p">,</span>
+                    <span class="n">db</span><span class="o">=</span><span class="n">db</span><span class="p">,</span>
+                    <span class="n">max_chunk_size</span><span class="o">=</span><span class="n">max_chunk_size</span><span class="p">,</span>
+                    <span class="n">in_memory</span><span class="o">=</span><span class="n">in_memory</span><span class="p">,</span>
+                    <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+                <span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">select</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">ids</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-                    <span class="k">assert</span> <span class="n">db</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-                    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_predict_with_select</span><span class="p">(</span>
-                        <span class="n">X</span><span class="o">=</span><span class="n">X</span><span class="p">,</span>
-                        <span class="n">select</span><span class="o">=</span><span class="n">select</span><span class="p">,</span>
-                        <span class="n">db</span><span class="o">=</span><span class="n">db</span><span class="p">,</span>
-                        <span class="n">in_memory</span><span class="o">=</span><span class="n">in_memory</span><span class="p">,</span>
-                        <span class="n">max_chunk_size</span><span class="o">=</span><span class="n">max_chunk_size</span><span class="p">,</span>
-                        <span class="n">overwrite</span><span class="o">=</span><span class="n">overwrite</span><span class="p">,</span>
-                        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
-                    <span class="p">)</span>
-                <span class="k">elif</span> <span class="n">select</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">ids</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                    <span class="k">assert</span> <span class="n">db</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-                    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_predict_with_select_and_ids</span><span class="p">(</span>
-                        <span class="n">X</span><span class="o">=</span><span class="n">X</span><span class="p">,</span>
-                        <span class="n">select</span><span class="o">=</span><span class="n">select</span><span class="p">,</span>
-                        <span class="n">ids</span><span class="o">=</span><span class="n">ids</span><span class="p">,</span>
-                        <span class="n">db</span><span class="o">=</span><span class="n">db</span><span class="p">,</span>
-                        <span class="n">max_chunk_size</span><span class="o">=</span><span class="n">max_chunk_size</span><span class="p">,</span>
-                        <span class="n">in_memory</span><span class="o">=</span><span class="n">in_memory</span><span class="p">,</span>
-                        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
-                    <span class="p">)</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="n">predict_type</span> <span class="o">=</span> <span class="s1">&#39;single prediction&#39;</span>
-                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">takes_context</span><span class="p">:</span>
-                        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;context&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">context</span>
-                    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_predict</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">one</span><span class="o">=</span><span class="n">one</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="n">select_collection</span> <span class="o">=</span> <span class="kc">None</span>
-            <span class="k">if</span> <span class="n">select</span><span class="p">:</span>
-                <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">select</span><span class="p">,</span> <span class="n">Select</span><span class="p">)</span>
-                <span class="n">select_collection</span> <span class="o">=</span> <span class="n">select</span><span class="o">.</span><span class="n">table_or_collection</span><span class="o">.</span><span class="n">identifier</span>
-
-            <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">ModelPredictException</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s1">&#39;Error while model prediction</span><span class="se">\</span>
-<span class="s1">                </span><span class="se">\n</span><span class="s1">info: predict type: </span><span class="si">{</span><span class="n">predict_type</span><span class="si">}</span><span class="s1">, </span><span class="se">\</span>
-<span class="s1">                Collection: </span><span class="si">{</span><span class="n">select_collection</span><span class="si">}</span><span class="s1">, Model: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">identifier</span><span class="si">}</span><span class="s1">&#39;</span>
-            <span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span></div>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">takes_context</span><span class="p">:</span>
+                    <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;context&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">context</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_predict</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">one</span><span class="o">=</span><span class="n">one</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Predictor.apredict">
@@ -543,14 +527,9 @@
         <span class="n">one</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
         <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">takes_context</span><span class="p">:</span>
-                <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;context&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">context</span>
-            <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_apredict</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">one</span><span class="o">=</span><span class="n">one</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">ModelPredictException</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s1">&#39;Error while async model prediction Model: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">identifier</span><span class="si">}</span><span class="s1">&#39;</span>
-            <span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span></div>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">takes_context</span><span class="p">:</span>
+            <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;context&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">context</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_apredict</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">one</span><span class="o">=</span><span class="n">one</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 
     <span class="k">def</span> <span class="nf">_predict_and_listen</span><span class="p">(</span>
@@ -577,7 +556,7 @@
                 <span class="p">},</span>
             <span class="p">),</span>
             <span class="n">dependencies</span><span class="o">=</span><span class="n">dependencies</span><span class="p">,</span>
-        <span class="p">)</span>
+        <span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 
     <span class="k">def</span> <span class="nf">_predict_with_select</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -854,6 +833,8 @@
         <span class="n">metrics</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Sequence</span><span class="p">[</span><span class="n">Metric</span><span class="p">],</span>
     <span class="p">):</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">validation_set</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="kn">from</span> <span class="nn">superduperdb.components.dataset</span> <span class="kn">import</span> <span class="n">Dataset</span>
+
             <span class="n">validation_set</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">Dataset</span><span class="p">,</span> <span class="n">db</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;dataset&#39;</span><span class="p">,</span> <span class="n">validation_set</span><span class="p">))</span>
 
         <span class="n">mdicts</span> <span class="o">=</span> <span class="p">[</span><span class="n">MongoStyleDict</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">unpack</span><span class="p">())</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">validation_set</span><span class="o">.</span><span class="n">data</span><span class="p">]</span>
@@ -935,46 +916,40 @@
 <span class="sd">        :param select: The select to use for training (optional)</span>
 <span class="sd">        :param validation_sets: The validation ``Dataset`` instances to use (optional)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">select</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-                <span class="n">select</span> <span class="o">=</span> <span class="n">Serializable</span><span class="o">.</span><span class="n">deserialize</span><span class="p">(</span><span class="n">select</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">select</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="n">select</span> <span class="o">=</span> <span class="n">Serializable</span><span class="o">.</span><span class="n">deserialize</span><span class="p">(</span><span class="n">select</span><span class="p">)</span>
 
-            <span class="k">if</span> <span class="n">validation_sets</span><span class="p">:</span>
-                <span class="n">validation_sets</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">validation_sets</span><span class="p">)</span>
-                <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">vs</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">validation_sets</span><span class="p">):</span>
-                    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">vs</span><span class="p">,</span> <span class="n">Dataset</span><span class="p">):</span>
-                        <span class="k">assert</span> <span class="n">db</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-                        <span class="n">db</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">vs</span><span class="p">)</span>
-                        <span class="n">validation_sets</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">vs</span><span class="o">.</span><span class="n">identifier</span>
+        <span class="k">if</span> <span class="n">validation_sets</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">superduperdb.components.dataset</span> <span class="kn">import</span> <span class="n">Dataset</span>
 
-            <span class="k">if</span> <span class="n">db</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="n">db</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+            <span class="n">validation_sets</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">validation_sets</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">vs</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">validation_sets</span><span class="p">):</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">vs</span><span class="p">,</span> <span class="n">Dataset</span><span class="p">):</span>
+                    <span class="k">assert</span> <span class="n">db</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+                    <span class="n">db</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">vs</span><span class="p">)</span>
+                    <span class="n">validation_sets</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">vs</span><span class="o">.</span><span class="n">identifier</span>
 
-            <span class="k">if</span> <span class="n">db</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">db</span><span class="o">.</span><span class="n">compute</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">&#39;distributed&#39;</span><span class="p">:</span>
-                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_fit_job</span><span class="p">(</span>
-                    <span class="n">X</span><span class="p">,</span>
-                    <span class="n">select</span><span class="o">=</span><span class="n">select</span><span class="p">,</span>
-                    <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
-                    <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
-                <span class="p">)(</span><span class="n">db</span><span class="o">=</span><span class="n">db</span><span class="p">,</span> <span class="n">dependencies</span><span class="o">=</span><span class="n">dependencies</span><span class="p">)</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fit</span><span class="p">(</span>
-                    <span class="n">X</span><span class="p">,</span>
-                    <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
-                    <span class="n">configuration</span><span class="o">=</span><span class="n">configuration</span><span class="p">,</span>
-                    <span class="n">data_prefetch</span><span class="o">=</span><span class="n">data_prefetch</span><span class="p">,</span>
-                    <span class="n">db</span><span class="o">=</span><span class="n">db</span><span class="p">,</span>
-                    <span class="n">metrics</span><span class="o">=</span><span class="n">metrics</span><span class="p">,</span>
-                    <span class="n">select</span><span class="o">=</span><span class="n">select</span><span class="p">,</span>
-                    <span class="n">validation_sets</span><span class="o">=</span><span class="n">validation_sets</span><span class="p">,</span>
-                    <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
-                <span class="p">)</span>
-        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
-            <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">select</span><span class="p">,</span> <span class="n">Select</span><span class="p">)</span>
-            <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">ModelFitException</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;Error while model fit</span><span class="se">\</span>
-<span class="s2">                </span><span class="se">\n</span><span class="s2">info: Collection:</span><span class="si">{</span><span class="n">select</span><span class="o">.</span><span class="n">table_or_collection</span><span class="o">.</span><span class="n">identifier</span><span class="si">}</span><span class="s2"> </span><span class="se">\</span>
-<span class="s2">                Model:</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">identifier</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">if</span> <span class="n">db</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">db</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">db</span><span class="o">.</span><span class="n">compute</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">&#39;distributed&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_fit_job</span><span class="p">(</span>
+                <span class="n">X</span><span class="p">,</span>
+                <span class="n">select</span><span class="o">=</span><span class="n">select</span><span class="p">,</span>
+                <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
+                <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+            <span class="p">)(</span><span class="n">db</span><span class="o">=</span><span class="n">db</span><span class="p">,</span> <span class="n">dependencies</span><span class="o">=</span><span class="n">dependencies</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fit</span><span class="p">(</span>
+                <span class="n">X</span><span class="p">,</span>
+                <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
+                <span class="n">configuration</span><span class="o">=</span><span class="n">configuration</span><span class="p">,</span>
+                <span class="n">data_prefetch</span><span class="o">=</span><span class="n">data_prefetch</span><span class="p">,</span>
+                <span class="n">db</span><span class="o">=</span><span class="n">db</span><span class="p">,</span>
+                <span class="n">metrics</span><span class="o">=</span><span class="n">metrics</span><span class="p">,</span>
+                <span class="n">select</span><span class="o">=</span><span class="n">select</span><span class="p">,</span>
+                <span class="n">validation_sets</span><span class="o">=</span><span class="n">validation_sets</span><span class="p">,</span>
+                <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
             <span class="p">)</span></div>
 </div>
 
