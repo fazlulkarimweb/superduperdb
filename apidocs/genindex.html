@@ -181,7 +181,7 @@
 <li class="toctree-l4"><a class="reference internal" href="source/superduperdb.ext.numpy.html">superduperdb.ext.numpy package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="source/superduperdb.ext.openai.html">superduperdb.ext.openai package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="source/superduperdb.ext.pillow.html">superduperdb.ext.pillow package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="source/superduperdb.ext.sentence_transformer.html">superduperdb.ext.sentence_transformer package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="source/superduperdb.ext.sentence_transformers.html">superduperdb.ext.sentence_transformers package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="source/superduperdb.ext.sklearn.html">superduperdb.ext.sklearn package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="source/superduperdb.ext.torch.html">superduperdb.ext.torch package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="source/superduperdb.ext.transformers.html">superduperdb.ext.transformers package</a></li>
@@ -265,6 +265,8 @@
 </li>
           <li><a href="source/superduperdb.backends.mongodb.cdc.html#superduperdb.backends.mongodb.cdc.listener.CDCKeys._generate_next_value_">(superduperdb.backends.mongodb.cdc.listener.CDCKeys method)</a>
 </li>
+          <li><a href="source/superduperdb.base.html#superduperdb.base.config.BytesEncoding._generate_next_value_">(superduperdb.base.config.BytesEncoding method)</a>
+</li>
           <li><a href="source/superduperdb.base.html#superduperdb.base.config.LogLevel._generate_next_value_">(superduperdb.base.config.LogLevel method)</a>
 </li>
           <li><a href="source/superduperdb.base.html#superduperdb.base.config.LogType._generate_next_value_">(superduperdb.base.config.LogType method)</a>
@@ -288,7 +290,7 @@
 </li>
         <li><a href="source/superduperdb.components.html#superduperdb.components.model._Predictor">_Predictor (class in superduperdb.components.model)</a>
 </li>
-        <li><a href="source/superduperdb.backends.base.html#superduperdb.backends.base.artifact.ArtifactStoreMixin._replace_artifacts">_replace_artifacts() (superduperdb.backends.base.artifact.ArtifactStoreMixin static method)</a>
+        <li><a href="source/superduperdb.backends.base.html#superduperdb.backends.base.artifact.ArtifactStoreMixin._replace_artifacts">_replace_artifacts() (superduperdb.backends.base.artifact.ArtifactStoreMixin method)</a>
 </li>
         <li><a href="source/superduperdb.components.html#superduperdb.components.model._TrainingConfiguration">_TrainingConfiguration (class in superduperdb.components.model)</a>
 </li>
@@ -313,7 +315,7 @@
         <ul>
           <li><a href="source/superduperdb.cdc.html#superduperdb.cdc.cdc.DatabaseChangeDataCapture.add">(superduperdb.cdc.cdc.DatabaseChangeDataCapture method)</a>
 </li>
-          <li><a href="source/superduperdb.misc.html#superduperdb.misc.serialization.Serializers.add">(superduperdb.misc.serialization.Serializers method)</a>
+          <li><a href="source/superduperdb.components.html#superduperdb.components.serializer.Serializers.add">(superduperdb.components.serializer.Serializers method)</a>
 </li>
           <li><a href="source/superduperdb.vector_search.html#superduperdb.vector_search.base.BaseVectorSearcher.add">(superduperdb.vector_search.base.BaseVectorSearcher method)</a>
 </li>
@@ -450,6 +452,8 @@
 </li>
         <li><a href="source/superduperdb.base.html#superduperdb.base.datalayer.Datalayer.backfill_vector_search">backfill_vector_search() (superduperdb.base.datalayer.Datalayer method)</a>
 </li>
+        <li><a href="source/superduperdb.base.html#superduperdb.base.config.BytesEncoding.BASE64">BASE64 (superduperdb.base.config.BytesEncoding attribute)</a>
+</li>
         <li><a href="source/superduperdb.backends.ibis.html#superduperdb.backends.ibis.db_helper.Base64Mixin">Base64Mixin (class in superduperdb.backends.ibis.db_helper)</a>
 </li>
         <li><a href="source/superduperdb.base.html#superduperdb.base.configs.ConfigSettings.base_config">base_config (superduperdb.base.configs.ConfigSettings attribute)</a>
@@ -472,8 +476,6 @@
 </li>
         <li><a href="source/superduperdb.misc.html#superduperdb.misc.colors.Colors.BLUE">BLUE (superduperdb.misc.colors.Colors attribute)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="source/superduperdb.base.html#superduperdb.base.build.build">build() (in module superduperdb.base.build)</a>
 </li>
         <li><a href="source/superduperdb.base.html#superduperdb.base.build.build_artifact_store">build_artifact_store() (in module superduperdb.base.build)</a>
@@ -486,6 +488,8 @@
           <li><a href="source/superduperdb.backends.mongodb.html#superduperdb.backends.mongodb.data_backend.MongoDataBackend.build_artifact_store">(superduperdb.backends.mongodb.data_backend.MongoDataBackend method)</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="source/superduperdb.base.html#superduperdb.base.build.build_compute">build_compute() (in module superduperdb.base.build)</a>
 </li>
         <li><a href="source/superduperdb.base.html#superduperdb.base.configs.build_config">build_config() (in module superduperdb.base.configs)</a>
@@ -506,6 +510,14 @@
           <li><a href="source/superduperdb.backends.mongodb.html#superduperdb.backends.mongodb.data_backend.MongoDataBackend.build_metadata">(superduperdb.backends.mongodb.data_backend.MongoDataBackend method)</a>
 </li>
         </ul></li>
+        <li><a href="source/superduperdb.components.html#superduperdb.components.serializer.build_torch_state_serializer">build_torch_state_serializer() (in module superduperdb.components.serializer)</a>
+</li>
+        <li><a href="source/superduperdb.base.html#superduperdb.base.config.BytesEncoding.BYTES">BYTES (superduperdb.base.config.BytesEncoding attribute)</a>
+</li>
+        <li><a href="source/superduperdb.base.html#superduperdb.base.config.Config.bytes_encoding">bytes_encoding (superduperdb.base.config.Config attribute)</a>
+</li>
+        <li><a href="source/superduperdb.base.html#superduperdb.base.config.BytesEncoding">BytesEncoding (class in superduperdb.base.config)</a>
+</li>
     </ul></td>
   </tr></table>
 </section>
@@ -593,11 +605,7 @@
         <li><a href="source/superduperdb.base.html#superduperdb.base.datalayer.Datalayer.close">close() (superduperdb.base.datalayer.Datalayer method)</a>
 </li>
         <li><a href="source/superduperdb.base.html#superduperdb.base.configs.ConfigSettings.cls">cls (superduperdb.base.configs.ConfigSettings attribute)</a>
-
-        <ul>
-          <li><a href="source/superduperdb.misc.html#superduperdb.misc.serialization.ModuleClassDict.cls">(superduperdb.misc.serialization.ModuleClassDict attribute)</a>
 </li>
-        </ul></li>
         <li><a href="source/superduperdb.base.html#superduperdb.base.config.Cluster">Cluster (class in superduperdb.base.config)</a>
 </li>
         <li><a href="source/superduperdb.base.html#superduperdb.base.config.Config.cluster">cluster (superduperdb.base.config.Config attribute)</a>
@@ -682,6 +690,18 @@
 </li>
         <li><a href="source/superduperdb.base.html#superduperdb.base.configs.ConfigSettings">ConfigSettings (class in superduperdb.base.configs)</a>
 </li>
+        <li><a href="source/superduperdb.components.html#superduperdb.components.serializer.Serializer.construct">construct() (superduperdb.components.serializer.Serializer method)</a>
+
+        <ul>
+          <li><a href="source/superduperdb.html#superduperdb.Serializer.construct">(superduperdb.Serializer method)</a>
+</li>
+        </ul></li>
+        <li><a href="source/superduperdb.components.html#superduperdb.components.serializer.Serializer.constructor">constructor (superduperdb.components.serializer.Serializer attribute)</a>
+
+        <ul>
+          <li><a href="source/superduperdb.html#superduperdb.Serializer.constructor">(superduperdb.Serializer attribute)</a>
+</li>
+        </ul></li>
         <li><a href="source/superduperdb.base.html#superduperdb.base.document.Document.content">content (superduperdb.base.document.Document attribute)</a>
 
         <ul>
@@ -837,19 +857,15 @@
 </li>
           <li><a href="source/superduperdb.components.html#superduperdb.components.schema.Schema.decode">(superduperdb.components.schema.Schema method)</a>
 </li>
+          <li><a href="source/superduperdb.components.html#superduperdb.components.serializer.Serializer.decode">(superduperdb.components.serializer.Serializer method)</a>
+</li>
           <li><a href="source/superduperdb.html#superduperdb.Document.decode">(superduperdb.Document static method)</a>
 </li>
           <li><a href="source/superduperdb.html#superduperdb.Encoder.decode">(superduperdb.Encoder method)</a>
 </li>
-          <li><a href="source/superduperdb.misc.html#superduperdb.misc.serialization.DillSerializer.decode">(superduperdb.misc.serialization.DillSerializer static method)</a>
-</li>
-          <li><a href="source/superduperdb.misc.html#superduperdb.misc.serialization.PickleSerializer.decode">(superduperdb.misc.serialization.PickleSerializer static method)</a>
-</li>
-          <li><a href="source/superduperdb.misc.html#superduperdb.misc.serialization.Serializer.decode">(superduperdb.misc.serialization.Serializer static method)</a>
-</li>
-          <li><a href="source/superduperdb.misc.html#superduperdb.misc.serialization.TorchSerializer.decode">(superduperdb.misc.serialization.TorchSerializer static method)</a>
-</li>
           <li><a href="source/superduperdb.html#superduperdb.Schema.decode">(superduperdb.Schema method)</a>
+</li>
+          <li><a href="source/superduperdb.html#superduperdb.Serializer.decode">(superduperdb.Serializer method)</a>
 </li>
         </ul></li>
         <li><a href="source/superduperdb.components.html#superduperdb.components.vector_index.DecodeArray">DecodeArray (class in superduperdb.components.vector_index)</a>
@@ -861,10 +877,16 @@
         <li><a href="source/superduperdb.components.html#superduperdb.components.encoder.Encoder.decoder">decoder (superduperdb.components.encoder.Encoder attribute)</a>
 
         <ul>
+          <li><a href="source/superduperdb.components.html#superduperdb.components.serializer.Serializer.decoder">(superduperdb.components.serializer.Serializer attribute)</a>
+</li>
           <li><a href="source/superduperdb.html#superduperdb.Encoder.decoder">(superduperdb.Encoder attribute)</a>
+</li>
+          <li><a href="source/superduperdb.html#superduperdb.Serializer.decoder">(superduperdb.Serializer attribute)</a>
 </li>
         </ul></li>
         <li><a href="source/superduperdb.ext.pillow.html#superduperdb.ext.pillow.encoder.DecoderPILImage">DecoderPILImage (class in superduperdb.ext.pillow.encoder)</a>
+</li>
+        <li><a href="source/superduperdb.components.html#superduperdb.components.serializer.DecodeTorchStateDict">DecodeTorchStateDict (class in superduperdb.components.serializer)</a>
 </li>
         <li><a href="source/superduperdb.base.html#superduperdb.base.jsonable.JSONable.deepcopy">deepcopy() (superduperdb.base.jsonable.JSONable method)</a>
 
@@ -932,8 +954,6 @@
           <li><a href="source/superduperdb.html#superduperdb.Model.device">(superduperdb.Model attribute)</a>
 </li>
         </ul></li>
-        <li><a href="source/superduperdb.misc.html#superduperdb.misc.serialization.ModuleClassDict.dict">dict (superduperdb.misc.serialization.ModuleClassDict attribute)</a>
-</li>
         <li><a href="source/superduperdb.base.html#superduperdb.base.jsonable.JSONable.dict">dict() (superduperdb.base.jsonable.JSONable method)</a>
 
         <ul>
@@ -942,7 +962,9 @@
           <li><a href="source/superduperdb.html#superduperdb.JSONable.dict">(superduperdb.JSONable method)</a>
 </li>
         </ul></li>
-        <li><a href="source/superduperdb.misc.html#superduperdb.misc.serialization.DillSerializer">DillSerializer (class in superduperdb.misc.serialization)</a>
+        <li><a href="source/superduperdb.components.html#superduperdb.components.serializer.dill_decode">dill_decode() (in module superduperdb.components.serializer)</a>
+</li>
+        <li><a href="source/superduperdb.components.html#superduperdb.components.serializer.dill_encode">dill_encode() (in module superduperdb.components.serializer)</a>
 </li>
         <li><a href="source/superduperdb.components.html#superduperdb.components.vector_index.VectorIndex.dimensions">dimensions (superduperdb.components.vector_index.VectorIndex property)</a>
 
@@ -1061,24 +1083,22 @@
 </li>
           <li><a href="source/superduperdb.components.html#superduperdb.components.schema.Schema.encode">(superduperdb.components.schema.Schema method)</a>
 </li>
+          <li><a href="source/superduperdb.components.html#superduperdb.components.serializer.Serializer.encode">(superduperdb.components.serializer.Serializer method)</a>
+</li>
           <li><a href="source/superduperdb.html#superduperdb.Document.encode">(superduperdb.Document method)</a>
 </li>
           <li><a href="source/superduperdb.html#superduperdb.Encoder.encode">(superduperdb.Encoder method)</a>
 </li>
-          <li><a href="source/superduperdb.misc.html#superduperdb.misc.serialization.DillSerializer.encode">(superduperdb.misc.serialization.DillSerializer static method)</a>
-</li>
-          <li><a href="source/superduperdb.misc.html#superduperdb.misc.serialization.PickleSerializer.encode">(superduperdb.misc.serialization.PickleSerializer static method)</a>
-</li>
-          <li><a href="source/superduperdb.misc.html#superduperdb.misc.serialization.Serializer.encode">(superduperdb.misc.serialization.Serializer static method)</a>
-</li>
-          <li><a href="source/superduperdb.misc.html#superduperdb.misc.serialization.TorchSerializer.encode">(superduperdb.misc.serialization.TorchSerializer static method)</a>
-</li>
           <li><a href="source/superduperdb.html#superduperdb.Schema.encode">(superduperdb.Schema method)</a>
+</li>
+          <li><a href="source/superduperdb.html#superduperdb.Serializer.encode">(superduperdb.Serializer method)</a>
 </li>
         </ul></li>
         <li><a href="source/superduperdb.ext.jina.html#superduperdb.ext.jina.client.JinaAPIClient.encode_batch">encode_batch() (superduperdb.ext.jina.client.JinaAPIClient method)</a>
 </li>
         <li><a href="source/superduperdb.ext.pillow.html#superduperdb.ext.pillow.encoder.encode_pil_image">encode_pil_image() (in module superduperdb.ext.pillow.encoder)</a>
+</li>
+        <li><a href="source/superduperdb.components.html#superduperdb.components.serializer.encode_torch_state_dict">encode_torch_state_dict() (in module superduperdb.components.serializer)</a>
 </li>
         <li><a href="source/superduperdb.components.html#superduperdb.components.vector_index.EncodeArray">EncodeArray (class in superduperdb.components.vector_index)</a>
 
@@ -1105,7 +1125,11 @@
 </li>
           <li><a href="source/superduperdb.components.html#superduperdb.components.model._Predictor.encoder">(superduperdb.components.model._Predictor attribute)</a>
 </li>
+          <li><a href="source/superduperdb.components.html#superduperdb.components.serializer.Serializer.encoder">(superduperdb.components.serializer.Serializer attribute)</a>
+</li>
           <li><a href="source/superduperdb.html#superduperdb.Encoder.encoder">(superduperdb.Encoder attribute)</a>
+</li>
+          <li><a href="source/superduperdb.html#superduperdb.Serializer.encoder">(superduperdb.Serializer attribute)</a>
 </li>
         </ul></li>
         <li><a href="source/superduperdb.base.html#superduperdb.base.cursor.SuperDuperCursor.encoders">encoders (superduperdb.base.cursor.SuperDuperCursor attribute)</a>
@@ -1324,6 +1348,14 @@
         </ul></li>
         <li><a href="source/superduperdb.ext.html#superduperdb.ext.utils.format_prompt">format_prompt() (in module superduperdb.ext.utils)</a>
 </li>
+        <li><a href="source/superduperdb.components.html#superduperdb.components.encoder.Encoder.from_base64">from_base64() (superduperdb.components.encoder.Encoder static method)</a>
+
+        <ul>
+          <li><a href="source/superduperdb.html#superduperdb.Encoder.from_base64">(superduperdb.Encoder static method)</a>
+</li>
+        </ul></li>
+        <li><a href="source/superduperdb.components.html#superduperdb.components.stack.Stack.from_dict">from_dict() (superduperdb.components.stack.Stack static method)</a>
+</li>
         <li><a href="source/superduperdb.components.html#superduperdb.components.stack.Stack.from_tarball">from_tarball() (superduperdb.components.stack.Stack static method)</a>
 </li>
     </ul></td>
@@ -1488,11 +1520,9 @@
           <li><a href="source/superduperdb.vector_search.html#superduperdb.vector_search.base.VectorSearchResult.id">(superduperdb.vector_search.base.VectorSearchResult attribute)</a>
 </li>
         </ul></li>
-        <li><a href="source/superduperdb.backends.base.html#superduperdb.backends.base.data_backend.BaseDataBackend.id_field">id_field (superduperdb.backends.base.data_backend.BaseDataBackend attribute)</a>
+        <li><a href="source/superduperdb.backends.base.html#superduperdb.backends.base.query.CompoundSelect.id_field">id_field (superduperdb.backends.base.query.CompoundSelect property)</a>
 
         <ul>
-          <li><a href="source/superduperdb.backends.base.html#superduperdb.backends.base.query.CompoundSelect.id_field">(superduperdb.backends.base.query.CompoundSelect property)</a>
-</li>
           <li><a href="source/superduperdb.backends.base.html#superduperdb.backends.base.query.Select.id_field">(superduperdb.backends.base.query.Select property)</a>
 </li>
           <li><a href="source/superduperdb.backends.ibis.html#superduperdb.backends.ibis.query.IbisQueryTable.id_field">(superduperdb.backends.ibis.query.IbisQueryTable property)</a>
@@ -1572,14 +1602,14 @@
           <li><a href="source/superduperdb.html#superduperdb.VectorIndex.indexing_listener">(superduperdb.VectorIndex attribute)</a>
 </li>
         </ul></li>
-        <li><a href="source/superduperdb.base.html#superduperdb.base.artifact.Artifact.info">info (superduperdb.base.artifact.Artifact attribute)</a>
-
-        <ul>
-          <li><a href="source/superduperdb.base.html#superduperdb.base.artifact.ArtifactDesc.info">(superduperdb.base.artifact.ArtifactDesc attribute)</a>
-</li>
-        </ul></li>
         <li><a href="source/superduperdb.base.html#superduperdb.base.config.LogLevel.INFO">INFO (superduperdb.base.config.LogLevel attribute)</a>
 </li>
+        <li><a href="source/superduperdb.components.html#superduperdb.components.serializer.Serializer.info">info (superduperdb.components.serializer.Serializer attribute)</a>
+
+        <ul>
+          <li><a href="source/superduperdb.html#superduperdb.Serializer.info">(superduperdb.Serializer attribute)</a>
+</li>
+        </ul></li>
         <li><a href="source/superduperdb.cli.html#superduperdb.cli.info.info">info() (in module superduperdb.cli.info)</a>
 
         <ul>
@@ -1866,8 +1896,6 @@
 </li>
         <li><a href="source/superduperdb.backends.base.html#superduperdb.backends.base.metadata.MetaDataStore">MetaDataStore (class in superduperdb.backends.base.metadata)</a>
 </li>
-        <li><a href="source/superduperdb.misc.html#superduperdb.misc.serialization.Method">Method (class in superduperdb.misc.serialization)</a>
-</li>
         <li><a href="source/superduperdb.html#superduperdb.Metric">Metric (class in superduperdb)</a>
 
         <ul>
@@ -2112,10 +2140,6 @@
 </li>
           <li><a href="source/superduperdb.ext.pillow.html#module-superduperdb.ext.pillow.encoder">superduperdb.ext.pillow.encoder</a>
 </li>
-          <li><a href="source/superduperdb.ext.sentence_transformer.html#module-superduperdb.ext.sentence_transformer">superduperdb.ext.sentence_transformer</a>
-</li>
-          <li><a href="source/superduperdb.ext.sentence_transformer.html#module-superduperdb.ext.sentence_transformer.model">superduperdb.ext.sentence_transformer.model</a>
-</li>
           <li><a href="source/superduperdb.ext.sklearn.html#module-superduperdb.ext.sklearn">superduperdb.ext.sklearn</a>
 </li>
           <li><a href="source/superduperdb.ext.sklearn.html#module-superduperdb.ext.sklearn.model">superduperdb.ext.sklearn.model</a>
@@ -2179,10 +2203,6 @@
         </ul></li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="source/superduperdb.misc.html#superduperdb.misc.serialization.ModuleClassDict.module">module (superduperdb.misc.serialization.ModuleClassDict attribute)</a>
-</li>
-        <li><a href="source/superduperdb.misc.html#superduperdb.misc.serialization.ModuleClassDict">ModuleClassDict (class in superduperdb.misc.serialization)</a>
-</li>
         <li><a href="source/superduperdb.backends.mongodb.html#superduperdb.backends.mongodb.artifacts.MongoArtifactStore">MongoArtifactStore (class in superduperdb.backends.mongodb.artifacts)</a>
 </li>
         <li><a href="source/superduperdb.backends.mongodb.cdc.html#superduperdb.backends.mongodb.cdc.listener.MongoChangePipeline">MongoChangePipeline (class in superduperdb.backends.mongodb.cdc.listener)</a>
@@ -2280,13 +2300,9 @@
         <ul>
           <li><a href="source/superduperdb.components.html#superduperdb.components.model.Model.object">(superduperdb.components.model.Model attribute)</a>
 </li>
-          <li><a href="source/superduperdb.components.html#superduperdb.components.serializer.Serializer.object">(superduperdb.components.serializer.Serializer attribute)</a>
-</li>
           <li><a href="source/superduperdb.html#superduperdb.Metric.object">(superduperdb.Metric attribute)</a>
 </li>
           <li><a href="source/superduperdb.html#superduperdb.Model.object">(superduperdb.Model attribute)</a>
-</li>
-          <li><a href="source/superduperdb.html#superduperdb.Serializer.object">(superduperdb.Serializer attribute)</a>
 </li>
         </ul></li>
         <li><a href="source/superduperdb.base.html#superduperdb.base.artifact.Artifact.object_id">object_id (superduperdb.base.artifact.Artifact attribute)</a>
@@ -2401,7 +2417,9 @@
         </ul></li>
         <li><a href="source/superduperdb.vector_search.html#superduperdb.vector_search.base.VectorSearchConfig.parameters">parameters (superduperdb.vector_search.base.VectorSearchConfig attribute)</a>
 </li>
-        <li><a href="source/superduperdb.misc.html#superduperdb.misc.serialization.PickleSerializer">PickleSerializer (class in superduperdb.misc.serialization)</a>
+        <li><a href="source/superduperdb.components.html#superduperdb.components.serializer.pickle_decode">pickle_decode() (in module superduperdb.components.serializer)</a>
+</li>
+        <li><a href="source/superduperdb.components.html#superduperdb.components.serializer.pickle_encode">pickle_encode() (in module superduperdb.components.serializer)</a>
 </li>
         <li><a href="source/superduperdb.components.html#superduperdb.components.component.Component.post_create">post_create() (superduperdb.components.component.Component method)</a>
 
@@ -2660,6 +2678,8 @@
         <li><a href="source/superduperdb.base.html#superduperdb.base.datalayer.Datalayer.refresh_after_delete">refresh_after_delete() (superduperdb.base.datalayer.Datalayer method)</a>
 </li>
         <li><a href="source/superduperdb.base.html#superduperdb.base.datalayer.Datalayer.refresh_after_update_or_insert">refresh_after_update_or_insert() (superduperdb.base.datalayer.Datalayer method)</a>
+</li>
+        <li><a href="source/superduperdb.misc.html#superduperdb.misc.download.remote_archive">remote_archive() (in module superduperdb.misc.download)</a>
 </li>
         <li><a href="source/superduperdb.base.html#superduperdb.base.datalayer.Datalayer.remove">remove() (superduperdb.base.datalayer.Datalayer method)</a>
 </li>
@@ -2935,12 +2955,6 @@
         </ul></li>
         <li><a href="source/superduperdb.base.html#superduperdb.base.config.Config.self_hosted_vector_search">self_hosted_vector_search (superduperdb.base.config.Config property)</a>
 </li>
-        <li><a href="source/superduperdb.ext.sentence_transformer.html#superduperdb.ext.sentence_transformer.SentenceTransformer">SentenceTransformer (class in superduperdb.ext.sentence_transformer)</a>
-
-        <ul>
-          <li><a href="source/superduperdb.ext.sentence_transformer.html#superduperdb.ext.sentence_transformer.model.SentenceTransformer">(class in superduperdb.ext.sentence_transformer.model)</a>
-</li>
-        </ul></li>
         <li><a href="source/superduperdb.backends.mongodb.cdc.html#superduperdb.backends.mongodb.cdc.base.CachedTokens.separate">separate (superduperdb.backends.mongodb.cdc.base.CachedTokens attribute)</a>
 </li>
         <li><a href="source/superduperdb.components.html#superduperdb.components.model.SequentialModel">SequentialModel (class in superduperdb.components.model)</a>
@@ -2960,8 +2974,6 @@
         <ul>
           <li><a href="source/superduperdb.components.html#superduperdb.components.serializer.Serializer">(class in superduperdb.components.serializer)</a>
 </li>
-          <li><a href="source/superduperdb.misc.html#superduperdb.misc.serialization.Serializer">(class in superduperdb.misc.serialization)</a>
-</li>
         </ul></li>
         <li><a href="source/superduperdb.base.html#superduperdb.base.artifact.Artifact.serializer">serializer (superduperdb.base.artifact.Artifact attribute)</a>
 
@@ -2973,10 +2985,14 @@
           <li><a href="source/superduperdb.html#superduperdb.Model.serializer">(superduperdb.Model attribute)</a>
 </li>
         </ul></li>
-        <li><a href="source/superduperdb.misc.html#superduperdb.misc.serialization.Serializers">Serializers (class in superduperdb.misc.serialization)</a>
+        <li><a href="source/superduperdb.components.html#superduperdb.components.serializer.Serializers">Serializers (class in superduperdb.components.serializer)</a>
 </li>
-        <li><a href="source/superduperdb.misc.html#superduperdb.misc.serialization.Serializers.serializers">serializers (superduperdb.misc.serialization.Serializers attribute)</a>
+        <li><a href="source/superduperdb.backends.base.html#superduperdb.backends.base.artifact.ArtifactStore.serializers">serializers (superduperdb.backends.base.artifact.ArtifactStore property)</a>
+
+        <ul>
+          <li><a href="source/superduperdb.components.html#superduperdb.components.serializer.Serializers.serializers">(superduperdb.components.serializer.Serializers attribute)</a>
 </li>
+        </ul></li>
         <li><a href="source/superduperdb.base.html#superduperdb.base.datalayer.Datalayer.server_mode">server_mode (superduperdb.base.datalayer.Datalayer property)</a>
 </li>
         <li><a href="source/superduperdb.base.html#superduperdb.base.exceptions.ServiceRequestException">ServiceRequestException</a>
@@ -3011,7 +3027,7 @@
           <li><a href="source/superduperdb.cdc.html#superduperdb.cdc.cdc.BaseDatabaseListener.setup_cdc">(superduperdb.cdc.cdc.BaseDatabaseListener method)</a>
 </li>
         </ul></li>
-        <li><a href="source/superduperdb.base.html#superduperdb.base.artifact.Artifact.sha1">sha1 (superduperdb.base.artifact.Artifact property)</a>
+        <li><a href="source/superduperdb.base.html#superduperdb.base.artifact.Artifact.sha1">sha1() (superduperdb.base.artifact.Artifact method)</a>
 </li>
         <li><a href="source/superduperdb.components.html#superduperdb.components.encoder.Encoder.shape">shape (superduperdb.components.encoder.Encoder attribute)</a>
 
@@ -3234,6 +3250,8 @@
           <li><a href="source/superduperdb.backends.ibis.html#module-superduperdb.backends.ibis.db_helper">module</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li>
     superduperdb.backends.ibis.field_types
 
@@ -3241,8 +3259,6 @@
           <li><a href="source/superduperdb.backends.ibis.html#module-superduperdb.backends.ibis.field_types">module</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li>
     superduperdb.backends.ibis.query
 
@@ -3636,20 +3652,6 @@
 </li>
         </ul></li>
         <li>
-    superduperdb.ext.sentence_transformer
-
-        <ul>
-          <li><a href="source/superduperdb.ext.sentence_transformer.html#module-superduperdb.ext.sentence_transformer">module</a>
-</li>
-        </ul></li>
-        <li>
-    superduperdb.ext.sentence_transformer.model
-
-        <ul>
-          <li><a href="source/superduperdb.ext.sentence_transformer.html#module-superduperdb.ext.sentence_transformer.model">module</a>
-</li>
-        </ul></li>
-        <li>
     superduperdb.ext.sklearn
 
         <ul>
@@ -3931,6 +3933,12 @@
 </li>
         <li><a href="source/superduperdb.misc.html#superduperdb.misc.download.TimeoutException">TimeoutException</a>
 </li>
+        <li><a href="source/superduperdb.components.html#superduperdb.components.encoder.Encoder.to_base64">to_base64() (superduperdb.components.encoder.Encoder static method)</a>
+
+        <ul>
+          <li><a href="source/superduperdb.html#superduperdb.Encoder.to_base64">(superduperdb.Encoder static method)</a>
+</li>
+        </ul></li>
         <li><a href="source/superduperdb.components.html#superduperdb.components.model._Predictor.to_call">to_call() (superduperdb.components.model._Predictor method)</a>
 
         <ul>
@@ -3953,7 +3961,9 @@
 </li>
         <li><a href="source/superduperdb.backends.mongodb.cdc.html#superduperdb.backends.mongodb.cdc.base.CachedTokens.token_path">token_path (superduperdb.backends.mongodb.cdc.base.CachedTokens attribute)</a>
 </li>
-        <li><a href="source/superduperdb.misc.html#superduperdb.misc.serialization.TorchSerializer">TorchSerializer (class in superduperdb.misc.serialization)</a>
+        <li><a href="source/superduperdb.components.html#superduperdb.components.serializer.torch_decode">torch_decode() (in module superduperdb.components.serializer)</a>
+</li>
+        <li><a href="source/superduperdb.components.html#superduperdb.components.serializer.torch_encode">torch_encode() (in module superduperdb.components.serializer)</a>
 </li>
         <li><a href="source/superduperdb.components.html#superduperdb.components.model.Model.train_select">train_select (superduperdb.components.model.Model attribute)</a>
 
@@ -4135,8 +4145,12 @@
           <li><a href="source/superduperdb.backends.mongodb.html#superduperdb.backends.mongodb.query.Collection.update_one">(superduperdb.backends.mongodb.query.Collection method)</a>
 </li>
         </ul></li>
-        <li><a href="source/superduperdb.components.html#superduperdb.components.encoder.Encodable.uri">uri (superduperdb.components.encoder.Encodable attribute)</a>
+        <li><a href="source/superduperdb.base.html#superduperdb.base.artifact.Artifact.uri">uri (superduperdb.base.artifact.Artifact attribute)</a>
+
+        <ul>
+          <li><a href="source/superduperdb.components.html#superduperdb.components.encoder.Encodable.uri">(superduperdb.components.encoder.Encodable attribute)</a>
 </li>
+        </ul></li>
         <li><a href="source/superduperdb.backends.base.html#superduperdb.backends.base.artifact.ArtifactStore.url">url() (superduperdb.backends.base.artifact.ArtifactStore method)</a>
 
         <ul>
