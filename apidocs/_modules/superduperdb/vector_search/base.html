@@ -360,6 +360,11 @@
 <a class="viewcode-back" href="../../../source/superduperdb.vector_search.html#superduperdb.vector_search.base.VectorSearchConfig">[docs]</a>
 <span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">VectorSearchConfig</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Represents search config which helps initiate a vector</span>
+<span class="sd">    searcher class.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
     <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">dimensions</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">measure</span><span class="p">:</span> <span class="n">VectorIndexMeasureType</span> <span class="o">=</span> <span class="n">VectorIndexMeasureType</span><span class="o">.</span><span class="n">l2</span>
@@ -371,6 +376,12 @@
 <a class="viewcode-back" href="../../../source/superduperdb.vector_search.html#superduperdb.vector_search.base.VectorItem">[docs]</a>
 <span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">VectorItem</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Class for representing a vector in vector search with</span>
+<span class="sd">    id and vector.</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+
     <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">vector</span><span class="p">:</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span>
 
@@ -398,6 +409,11 @@
 <a class="viewcode-back" href="../../../source/superduperdb.vector_search.html#superduperdb.vector_search.base.VectorSearchResult">[docs]</a>
 <span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">VectorSearchResult</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Dataclass for representing vector search results with</span>
+<span class="sd">    `id` and `score`.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
     <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">score</span><span class="p">:</span> <span class="nb">float</span></div>
 
@@ -406,6 +422,9 @@
 <div class="viewcode-block" id="l2">
 <a class="viewcode-back" href="../../../source/superduperdb.vector_search.html#superduperdb.vector_search.base.l2">[docs]</a>
 <span class="k">def</span> <span class="nf">l2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    L2 function for vector similarity search</span>
+<span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="n">numpy</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">y</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)])</span></div>
 
 
@@ -413,6 +432,9 @@
 <div class="viewcode-block" id="dot">
 <a class="viewcode-back" href="../../../source/superduperdb.vector_search.html#superduperdb.vector_search.base.dot">[docs]</a>
 <span class="k">def</span> <span class="nf">dot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Dot function for vector similarity search</span>
+<span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">T</span><span class="p">)</span></div>
 
 
@@ -420,6 +442,9 @@
 <div class="viewcode-block" id="cosine">
 <a class="viewcode-back" href="../../../source/superduperdb.vector_search.html#superduperdb.vector_search.base.cosine">[docs]</a>
 <span class="k">def</span> <span class="nf">cosine</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Cosine similarity function for vector search</span>
+<span class="sd">    &#39;&#39;&#39;</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">/</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[:,</span> <span class="kc">None</span><span class="p">]</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">/</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[:,</span> <span class="kc">None</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span></div>
