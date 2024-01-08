@@ -179,6 +179,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../source/superduperdb.ext.anthropic.html">superduperdb.ext.anthropic package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../source/superduperdb.ext.cohere.html">superduperdb.ext.cohere package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../source/superduperdb.ext.jina.html">superduperdb.ext.jina package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../source/superduperdb.ext.llm.html">superduperdb.ext.llm package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../source/superduperdb.ext.numpy.html">superduperdb.ext.numpy package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../source/superduperdb.ext.openai.html">superduperdb.ext.openai package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../source/superduperdb.ext.pillow.html">superduperdb.ext.pillow package</a></li>
@@ -245,10 +246,22 @@
 <span class="kn">import</span> <span class="nn">numpy</span>
 <span class="kn">import</span> <span class="nn">numpy.typing</span>
 
+<span class="k">if</span> <span class="n">t</span><span class="o">.</span><span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">superduperdb.components.vector_index</span> <span class="kn">import</span> <span class="n">VectorIndex</span>
+
 
 <div class="viewcode-block" id="BaseVectorSearcher">
 <a class="viewcode-back" href="../../../source/superduperdb.vector_search.html#superduperdb.vector_search.base.BaseVectorSearcher">[docs]</a>
 <span class="k">class</span> <span class="nc">BaseVectorSearcher</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+<div class="viewcode-block" id="BaseVectorSearcher.from_component">
+<a class="viewcode-back" href="../../../source/superduperdb.vector_search.html#superduperdb.vector_search.base.BaseVectorSearcher.from_component">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_component</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">vi</span><span class="p">:</span> <span class="s1">&#39;VectorIndex&#39;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
+            <span class="n">identifier</span><span class="o">=</span><span class="n">vi</span><span class="o">.</span><span class="n">identifier</span><span class="p">,</span> <span class="n">dimensions</span><span class="o">=</span><span class="n">vi</span><span class="o">.</span><span class="n">dimensions</span><span class="p">,</span> <span class="n">measure</span><span class="o">=</span><span class="n">vi</span><span class="o">.</span><span class="n">measure</span>
+        <span class="p">)</span></div>
+
+
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
