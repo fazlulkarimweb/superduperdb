@@ -5,7 +5,7 @@
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
 
     <!-- Generated with Sphinx 7.2.6 and Furo 2024.01.29 -->
-        <title>superduperdb.base.jsonable - Python documentation</title>
+        <title>superduperdb.base.leaf - Python documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?v=36a5483c" />
@@ -239,78 +239,38 @@
           </label>
         </div>
         <article role="main">
-          <h1>Source code for superduperdb.base.jsonable</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">functools</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">import</span> <span class="nn">typing</span> <span class="k">as</span> <span class="nn">t</span>
+          <h1>Source code for superduperdb.base.leaf</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">typing</span> <span class="k">as</span> <span class="nn">t</span>
+<span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span><span class="p">,</span> <span class="n">abstractproperty</span>
 
-<span class="kn">import</span> <span class="nn">pydantic</span>
-
-<span class="n">__all__</span> <span class="o">=</span> <span class="s1">&#39;Factory&#39;</span><span class="p">,</span> <span class="s1">&#39;JSONable&#39;</span>
-
-<span class="n">TYPE_ID_ATTR</span> <span class="o">=</span> <span class="s1">&#39;type_id&#39;</span>
-<span class="n">_NONE</span> <span class="o">=</span> <span class="nb">object</span><span class="p">()</span>
+<span class="kn">from</span> <span class="nn">superduperdb.base.config</span> <span class="kn">import</span> <span class="n">BytesEncoding</span>
 
 
-<div class="viewcode-block" id="Factory">
-<a class="viewcode-back" href="../../../source/superduperdb.base.html#superduperdb.Factory">[docs]</a>
-<span class="k">def</span> <span class="nf">Factory</span><span class="p">(</span><span class="n">factory</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Callable</span><span class="p">,</span> <span class="o">**</span><span class="n">ka</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">:</span>
-    <span class="k">return</span> <span class="n">pydantic</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">factory</span><span class="p">,</span> <span class="o">**</span><span class="n">ka</span><span class="p">)</span></div>
+<div class="viewcode-block" id="Leaf">
+<a class="viewcode-back" href="../../../source/superduperdb.base.html#superduperdb.base.leaf.Leaf">[docs]</a>
+<span class="k">class</span> <span class="nc">Leaf</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+    <span class="nd">@abstractproperty</span>
+    <span class="k">def</span> <span class="nf">unique_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+<div class="viewcode-block" id="Leaf.encode">
+<a class="viewcode-back" href="../../../source/superduperdb.base.html#superduperdb.base.leaf.Leaf.encode">[docs]</a>
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">encode</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">bytes_encoding</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="n">BytesEncoding</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">leaf_types_to_keep</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Sequence</span> <span class="o">=</span> <span class="p">(),</span>
+    <span class="p">):</span>
+        <span class="k">pass</span></div>
 
 
-
-<div class="viewcode-block" id="JSONable">
-<a class="viewcode-back" href="../../../source/superduperdb.base.html#superduperdb.JSONable">[docs]</a>
-<span class="k">class</span> <span class="nc">JSONable</span><span class="p">(</span><span class="n">pydantic</span><span class="o">.</span><span class="n">BaseModel</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    A base class for classes that can be</span>
-<span class="sd">    converted to and from JSON</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-<div class="viewcode-block" id="JSONable.Config">
-<a class="viewcode-back" href="../../../source/superduperdb.base.html#superduperdb.JSONable.Config">[docs]</a>
-    <span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
-        <span class="c1"># Fail in deserializion if there are extra fields</span>
-        <span class="n">extra</span> <span class="o">=</span> <span class="s1">&#39;forbid&#39;</span>
-
-        <span class="c1"># See https://github.com/samuelcolvin/pydantic/issues/1241</span>
-        <span class="k">if</span> <span class="n">pydantic</span><span class="o">.</span><span class="n">__version__</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">):</span>
-            <span class="n">ignored_types</span> <span class="o">=</span> <span class="p">(</span><span class="n">functools</span><span class="o">.</span><span class="n">cached_property</span><span class="p">,)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">keep_untouched</span> <span class="o">=</span> <span class="p">(</span><span class="n">functools</span><span class="o">.</span><span class="n">cached_property</span><span class="p">,)</span></div>
-
-
-    <span class="n">SUBCLASSES</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">ClassVar</span><span class="p">[</span><span class="n">t</span><span class="o">.</span><span class="n">Set</span><span class="p">[</span><span class="n">t</span><span class="o">.</span><span class="n">Type</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
-    <span class="n">TYPE_ID_TO_CLASS</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">ClassVar</span><span class="p">[</span><span class="n">t</span><span class="o">.</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">Type</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
-
-    <span class="nd">@functools</span><span class="o">.</span><span class="n">wraps</span><span class="p">(</span><span class="n">pydantic</span><span class="o">.</span><span class="n">BaseModel</span><span class="o">.</span><span class="n">dict</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">ka</span><span class="p">):</span>
-        <span class="n">d</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">dict</span><span class="p">(</span><span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">ka</span><span class="p">)</span>
-        <span class="n">properties</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">schema</span><span class="p">()[</span><span class="s1">&#39;properties&#39;</span><span class="p">]</span>
-        <span class="k">return</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">properties</span><span class="p">}</span>
-
-<div class="viewcode-block" id="JSONable.deepcopy">
-<a class="viewcode-back" href="../../../source/superduperdb.base.html#superduperdb.JSONable.deepcopy">[docs]</a>
-    <span class="k">def</span> <span class="nf">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;JSONable&#39;</span><span class="p">:</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
-
-
-    <span class="k">def</span> <span class="nf">__init_subclass__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">ka</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init_subclass__</span><span class="p">(</span><span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">ka</span><span class="p">)</span>
-        <span class="bp">cls</span><span class="o">.</span><span class="n">SUBCLASSES</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
-
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">type_id</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">TYPE_ID_ATTR</span><span class="p">)</span>
-        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
-            <span class="k">return</span>
-
-        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">type_id</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-            <span class="p">(</span><span class="n">type_id</span><span class="p">,)</span> <span class="o">=</span> <span class="n">type_id</span><span class="o">.</span><span class="n">__args__</span>
-
-        <span class="k">if</span> <span class="n">old_model</span> <span class="o">:=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">TYPE_ID_TO_CLASS</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">type_id</span><span class="p">):</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Duplicate type_id: old=</span><span class="si">{</span><span class="n">old_model</span><span class="si">}</span><span class="s1">, new=</span><span class="si">{</span><span class="bp">cls</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
-
-        <span class="bp">cls</span><span class="o">.</span><span class="n">TYPE_ID_TO_CLASS</span><span class="p">[</span><span class="n">type_id</span><span class="p">]</span> <span class="o">=</span> <span class="bp">cls</span></div>
+<div class="viewcode-block" id="Leaf.decode">
+<a class="viewcode-back" href="../../../source/superduperdb.base.html#superduperdb.base.leaf.Leaf.decode">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">decode</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">db</span><span class="p">):</span>
+        <span class="k">pass</span></div>
+</div>
 
 </pre></div>
         </article>
