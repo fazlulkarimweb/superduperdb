@@ -12,6 +12,14 @@ superduperdb.base.build module
    :undoc-members:
    :show-inheritance:
 
+superduperdb.base.code module
+-----------------------------
+
+.. automodule:: superduperdb.base.code
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 superduperdb.base.config module
 -------------------------------
 
@@ -52,10 +60,26 @@ superduperdb.base.datalayer module
    :undoc-members:
    :show-inheritance:
 
+superduperdb.base.decorators module
+-----------------------------------
+
+.. automodule:: superduperdb.base.decorators
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 superduperdb.base.document module
 ---------------------------------
 
 .. automodule:: superduperdb.base.document
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+superduperdb.base.enums module
+------------------------------
+
+.. automodule:: superduperdb.base.enums
    :members:
    :undoc-members:
    :show-inheritance:
